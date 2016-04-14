@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study Monster Project.CSharp.Plugins", "Study Monster Project.CSharp.Plugins.csproj", "{8C20AC63-1D52-7490-744B-B249046A3392}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study Monster Project.CSharp", "Study Monster Project.CSharp.csproj", "{A5A60A49-B265-E6D2-1424-A6A72D0FA292}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study Monster Project.CSharp.Editor", "Study Monster Project.CSharp.Editor.csproj", "{83E0C9A1-75B9-88AD-9384-B21DA9C06C93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C20AC63-1D52-7490-744B-B249046A3392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C20AC63-1D52-7490-744B-B249046A3392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C20AC63-1D52-7490-744B-B249046A3392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C20AC63-1D52-7490-744B-B249046A3392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5A60A49-B265-E6D2-1424-A6A72D0FA292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5A60A49-B265-E6D2-1424-A6A72D0FA292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5A60A49-B265-E6D2-1424-A6A72D0FA292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5A60A49-B265-E6D2-1424-A6A72D0FA292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E0C9A1-75B9-88AD-9384-B21DA9C06C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E0C9A1-75B9-88AD-9384-B21DA9C06C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E0C9A1-75B9-88AD-9384-B21DA9C06C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E0C9A1-75B9-88AD-9384-B21DA9C06C93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
