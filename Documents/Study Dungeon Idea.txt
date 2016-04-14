@@ -1,0 +1,64 @@
+OVERVIEW:
+
+One popular story goes with the protagonist getting sucked into kinds of virtual worlds, often times computer video games.
+This one gets sucked into a math(or physics, not sure yet) textbook.
+He has to make his way through chapters(analogous to cities) in a pokemon style game.
+He has his own life alright(analogous to mental strength remaining), beds throughout the game to heal.
+(possible feature: can buy chocolates(Or other motivaitng objects) in-game to heal in battle. Can use marks or something.)
+He fights various problems in each chapter(maybe in a gym like building called Excersise Dungeon or something) and learns in some other specific buildings. 
+
+
+
+
+
+
+STORY:
+
+
+Protag's father is popular scientist, protag is though, not very good at studies.
+The game starts with mid-term exams being declared. Protag is disappointed, just passes, bottom of class,
+people back talk about protag being stupid despite being son of popular scientist.
+Protag trash talks himself as well.
+Goes home, father does not reprimand, says he thinks it's time and hands over bunch of books to protag, tells him that he studied from those books in his time and that protag should try them out too.
+(Father might mention that protag shoud start with one of the books which is a lot thinner than the rest)
+Protag thinks the heck hes already got a whole lot of books he can't understand and throws the book on study table in room and dozes off.
+Next morning, protag is in a little better mood and is a little curious. Opens book mentioned by father and reads heading on first page. Gets sucked into the book.
+Darkness...
+"....What happened?..."
+[Noticeable Drastic graphic change here: Graphics till now were VN style, beautifully drawn, drawn frame by frame story telling. This changes into 16 bit-ish pokemons style pixel art.]
+Protag talks to wise old man who says something along the lines:
+"Welcome brave student, you have chosen or have been chosen to make you way through the trials of [book name(highschool algebra)]. 
+You might want to know how you are supposed to get back to your world, and I assure you I am sorry to tell you that the only way to do that
+is to reach the end of the trials of [] and get the exit pass. Before you ask, I will tell you that time in this world is 1000 times slower than in the other world, so you don't have to worry about that. There'd come many that'd help you as well as obstruct you in your journey brave student. I wish you luck."
+
+
+3 types of NPC will exist throughout the game:
+
+1) Friendly people with the ideology (not explicitly stated) that education should be free to all, and that everyone has equal right to it.
+These are the people that would teach Protag throughout the journey and help him complete the TB. They will also give all the tutorials throughout the game. They will have their own buildings in most towns.
+2) Neutral people, town dweller type, shopkeepers maybe. (No specific purpose yet.)
+3) People with ideology ( not explicitly stated in game again) that only the elite few should have the privellege of education. These NPCs will aim to hinder protag throughout the game. These are the people who protag will have to defeat in order to move from one town to the next. (the gym leaders and monsters.) They'd guard passage between towns and will only let the protag through once he gets the permission from the specific towns authority. (ie by defeating them. Or proving his learnings)
+
+(Something about completing the textbook to escape, [Protag might as a side-effect, end up becoming top of class student from being a deliquent or an average student]).
+
+
+
+
+
+GAMEPLAY:
+
+Fights with problems involve draining the opponent problems life to zero ( Life corresponding to progress through the question).
+Each problem will be broken into a number of steps(say 4) At each step you will be given 4 options, On what the next step in solving the problem should be. If you choose correctly, the monster's life would decrease according to the number of steps (25% with 4 parts. [Damage  = (100/No.ofparts)*Total Health])
+Wrong answer will deal damage to the player, and the player would be given the option to choose from the remaining 3 options.
+Players, on encounter with a problem, will be able to choose between solve and run to study(or something like that) [similar to how pokemon has fight, run etc.]
+
+
+
+
+
+CHALLENGES:
+
+1) What should problem monsters look like? Should they be the problem themselves or a person? An Examiner or something?
+
+2) In my personal experience in school, I have learned something:
+People do not study in their freetime in school. When I ask them why they don't, and tell them that they could do better things at home if they study now, I have been told that my logic is flawed. They tell me that even if they study in school, they'd still have to study at home because of their parents. They have set number of study hours that they have to go through, willingly or otherwise. It just so happens that these people (a majority, i'd guess) would not want to play this game because playing games would count towards their recreation time and not study time. Therefore they would rather choose to not do anything related to studies in that precious time of theirs.
