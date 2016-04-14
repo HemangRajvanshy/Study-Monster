@@ -46,6 +46,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void SetProgress(int PIndex)
+    {
+        ProgressIndex = PIndex;
+    }
+
     //Private Methods
 
     private void InitializeFromSave(PlayerSave Save)

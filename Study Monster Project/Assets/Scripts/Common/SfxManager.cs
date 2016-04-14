@@ -8,12 +8,15 @@ public class SfxManager : MonoBehaviour {
 
     public AudioClip TypingSfx;
 
-    void Awake()
+    public void Initialize()
     {
         if (Main.Instance.PlayerData != null)
             On = Main.Instance.PlayerData.Sfx;
         else
             On = true;
+
+        if (!On)
+            Audio.mute = true;
     }
 
     public void Play(AudioClip clip)
@@ -24,5 +27,6 @@ public class SfxManager : MonoBehaviour {
     public void MenuToggle(bool value)
     {
         On = value;
+        Audio.mute = On;
     }
 }

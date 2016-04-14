@@ -9,16 +9,16 @@ public class MusicManager : MonoBehaviour {
     public AudioClip MenuBgMusic;
     public AudioClip GameBgMusic;
 
-    void Awake()
+    public void Initialize()
     {
         if (Main.Instance.PlayerData != null)
             On = Main.Instance.PlayerData.Music;
         else
             On = true;
-    }
 
-    void Start()
-    {
+        if (!On)
+            Music.mute = true;
+
         Play(MenuBgMusic);
     }
 
@@ -30,5 +30,6 @@ public class MusicManager : MonoBehaviour {
     public void MenuToggle(bool value)
     {
         On = value;
+        Music.mute = On;
     }
 }
