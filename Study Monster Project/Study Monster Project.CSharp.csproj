@@ -76,6 +76,8 @@
     <Compile Include="Assets\Scripts\Common\MusicManager.cs" />
     <Compile Include="Assets\Scripts\Common\Player.cs" />
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
+    <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Pause.cs" />
     <Compile Include="Assets\Scripts\Menu\Menu_UI.cs" />
     <Compile Include="Assets\Scripts\Menu\PlayPanel.cs" />
     <Compile Include="Assets\Scripts\Menu\QuitScript.cs" />
