@@ -7,6 +7,7 @@ public class Menu_UI : MonoBehaviour {
     public GameObject PlayPanel;
     public GameObject CreditsPanel;
     public GameObject QuitPanel;
+    public GameObject SaveSelect;
 
     public Toggle SfxToggle;
     public Toggle MusicToggle;
@@ -15,7 +16,8 @@ public class Menu_UI : MonoBehaviour {
     {
         Play,
         Credits,
-        Quit
+        Quit,
+        SaveSelect
     };
     private MenuState menuState;
 
@@ -33,18 +35,27 @@ public class Menu_UI : MonoBehaviour {
         CreditsPanel.SetActive(true);
     }
 
-    public void ClosePanel()
-    {
-        DeactivatePanels();
-        menuState = MenuState.Play;
-        PlayPanel.GetComponent<PlayPanel>().ShowPlayPanel();
-    }
 
     public void OnQuitClick()
     {
         DeactivatePanels();
         menuState = MenuState.Quit;
         QuitPanel.GetComponent<QuitScript>().ShowQuitPanel();
+    }
+
+    public void ShowSaveSelect()
+    {
+        DeactivatePanels();
+        menuState = MenuState.SaveSelect;
+        SaveSelect.GetComponent<SaveSelect>().ShowSaveSelect();
+    }
+
+
+    public void ClosePanel()
+    {
+        DeactivatePanels();
+        menuState = MenuState.Play;
+        PlayPanel.GetComponent<PlayPanel>().ShowPlayPanel();
     }
 
     public void Back()
@@ -81,6 +92,9 @@ public class Menu_UI : MonoBehaviour {
                 break;
             case MenuState.Credits:
                 CreditsPanel.SetActive(false);
+                break;
+            case MenuState.SaveSelect:
+                SaveSelect.GetComponent<SaveSelect>().HideSaveSelect();
                 break;
         }
     }

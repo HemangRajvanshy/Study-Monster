@@ -60,7 +60,7 @@ public class Main : MonoBehaviour {
 
     private void Init()
     {
-        player.Load(); // Load the game from save.
+        player.Init(); // Load the game from save.
 
         MusicMgr.Initialize(); // Setup Audio
         SfxMgr.Initialize();

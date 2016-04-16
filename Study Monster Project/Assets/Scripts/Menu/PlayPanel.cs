@@ -3,9 +3,12 @@ using System.Collections;
 
 public class PlayPanel : MonoBehaviour {
 
+    public Menu_UI Menu;
+
     public void Play()
     {
-        Main.Instance.LoadGameScene();
+        Menu.ShowSaveSelect();
+        //Main.Instance.LoadGameScene();
     }
 
     public void ShowPlayPanel()
