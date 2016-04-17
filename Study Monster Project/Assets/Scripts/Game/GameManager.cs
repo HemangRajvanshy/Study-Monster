@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour {
     public StoryManager StoryManager;
 
     private int ProgressIndex;
+    private GameState state;
+
+    private enum GameState
+    {
+        Story,
+        Game,
+        Talking
+    };
 
     #region UnityMethods
 
@@ -21,6 +29,7 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
+        state = GameState.Game;
         ProgressIndex = Main.Instance.player.GameData.ProgressIndex;
         if (ProgressIndex == 0)
             IncrementProgress();
@@ -33,6 +42,30 @@ public class GameManager : MonoBehaviour {
     public void OnBack()
     {
         Pause.Pause_Resume();
+    }
+
+    public void StoryComplete()
+    {
+        state = GameState.Game;
+        if(ProgressIndex == 1)
+        {
+            IncrementProgress();
+        }
+    }
+
+    public void OnClick(UnityEngine.EventSystems.RaycastResult ray)
+    {
+        if (ray.module.name == "PauseCanvas")
+            return;
+        switch (state)
+        {
+            case GameState.Story:
+                StoryManager.OnClick();
+                break;
+            default:
+                Debug.Log("Stray Click.");
+                break;
+        }
     }
 
     #endregion
@@ -51,13 +84,19 @@ public class GameManager : MonoBehaviour {
     {
         if(ProgressIndex == 1)
         {
-            //Start Story
+            StartStory(0);
         }
     }
 
     private void SaveGame()
     {
         Main.Instance.player.SaveGame();
+    }
+
+    private void StartStory(int StoryIndx)
+    {
+        state = GameState.Story;
+        StoryManager.Init(StoryIndx);
     }
 
     #endregion

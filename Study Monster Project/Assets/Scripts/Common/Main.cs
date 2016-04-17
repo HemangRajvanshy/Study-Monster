@@ -54,6 +54,14 @@ public class Main : MonoBehaviour {
         player.SetProgress(PIndex);
     }
 
+    public void OnClick(UnityEngine.EventSystems.RaycastResult result)
+    {
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            GameManager.Instance.OnClick(result);
+        }
+    }
+
     #endregion
 
     #region privateMethods
