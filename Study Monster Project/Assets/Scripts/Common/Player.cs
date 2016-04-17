@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public GameSave GameData { get; private set;  }
     public bool PlayerDataExists { get { return PlayerDataExist(); } }
 
+    private int ActiveSaveNumber;
     private int ProgressIndex;
 
     void OnDestroy()
@@ -22,24 +23,24 @@ public class Player : MonoBehaviour {
         Load();
 
         GameData = new GameSave();
+
+        if (!PlayerDataExist())
+        {
+            ResetGameSave(1);
+            ResetGameSave(2);
+            ResetGameSave(3);
+        }
+    }
+
+    public void ResetGameSave(int SaveNum)
+    {
         GameData.ProgressIndex = 0;
 
-        if (PlayerDataExist())
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
+        BinaryFormatter formatter = new BinaryFormatter();
 
-            FileStream file1 = File.Create(Application.persistentDataPath + "/game1.dat");
-            formatter.Serialize(file1, GameData);
-            file1.Close();
-
-            FileStream file2 = File.Create(Application.persistentDataPath + "/game2.dat");
-            formatter.Serialize(file2, GameData);
-            file2.Close();
-
-            FileStream file3 = File.Create(Application.persistentDataPath + "/game3.dat");
-            formatter.Serialize(file3, GameData);
-            file3.Close();
-        }
+        FileStream file1 = File.Create(Application.persistentDataPath + "/game" + SaveNum.ToString() + ".dat");
+        formatter.Serialize(file1, GameData);
+        file1.Close();
     }
 
     public void SetProgress(int PIndex)
@@ -47,14 +48,28 @@ public class Player : MonoBehaviour {
         ProgressIndex = PIndex;
     }
 
-    public void SaveGame(int saveNumber)
+    public void SaveGame() // Save the current GameData to permanent memory.
     {
+        GameData.ProgressIndex = ProgressIndex;
 
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/game" + ActiveSaveNumber.ToString() + ".dat");
+        GameSave save = GameData;
+
+        formatter.Serialize(file, save);
+        file.Close();
     }
 
-    public void LoadGame()
+    public void LoadGame(int saveNumber)
     {
+        ActiveSaveNumber = saveNumber;
 
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/game" + saveNumber.ToString() + ".dat", FileMode.Open);
+        GameData = (GameSave)formatter.Deserialize(file);
+        file.Close();
+
+        ProgressIndex = GameData.ProgressIndex;
     }
 
     public void GetSaveStatus(out bool save1, out bool save2, out bool save3)
@@ -66,17 +81,17 @@ public class Player : MonoBehaviour {
 
             FileStream file1 = File.Open(Application.persistentDataPath + "/game1.dat", FileMode.Open);
             GameSave Save1 = (GameSave)formatter.Deserialize(file1);
-            save1 = (Save1.ProgressIndex == 1);
+            save1 = (Save1.ProgressIndex > 0);
             file1.Close();
 
             FileStream file2 = File.Open(Application.persistentDataPath + "/game2.dat", FileMode.Open);
             GameSave Save2 = (GameSave)formatter.Deserialize(file2);
-            save2 = (Save2.ProgressIndex == 1);
+            save2 = (Save2.ProgressIndex > 0);
             file2.Close();
 
             FileStream file3 = File.Open(Application.persistentDataPath + "/game3.dat", FileMode.Open);
             GameSave Save3 = (GameSave)formatter.Deserialize(file3);
-            save3 = (Save3.ProgressIndex == 1);
+            save3 = (Save3.ProgressIndex > 0);
             file3.Close();
         }
     }

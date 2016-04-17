@@ -9,6 +9,10 @@ public class SaveSelect : MonoBehaviour {
     public Text Save2Text;
     public Text Save3Text;
 
+    public Button LoadButton;
+    public Button ResetButton;
+
+    private int SaveNum;
     private bool Save1Exist;
     private bool Save2Exist;
     private bool Save3Exist;
@@ -42,6 +46,39 @@ public class SaveSelect : MonoBehaviour {
             Save2Text.text = "Save 2";
         if (Save3Exist)
             Save3Text.text = "Save 3";
+    }
+
+    public void Save1Select()
+    {
+        SaveNum = 1;
+        LoadButton.interactable = true;
+        ResetButton.interactable = true;
+    }
+
+    public void Save2Select()
+    {
+        SaveNum = 2; 
+        LoadButton.interactable = true;
+        ResetButton.interactable = true;
+    }
+
+    public void Save3Select()
+    {
+        SaveNum = 3;
+        LoadButton.interactable = true;
+        ResetButton.interactable = true;
+    }
+
+    public void Load()
+    {
+        Main.Instance.player.LoadGame(SaveNum);
+        Main.Instance.LoadGameScene();
+    }
+
+    public void Reset()
+    {
+        Main.Instance.player.ResetGameSave(SaveNum);
+        SetupSaves();
     }
 
     public void ShowSaveSelect()
