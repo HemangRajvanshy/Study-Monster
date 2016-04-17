@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
     public Pause Pause;
+    public TextType TextType;
+    public StoryManager StoryManager;
 
     private int ProgressIndex;
 
@@ -42,6 +44,15 @@ public class GameManager : MonoBehaviour {
         ProgressIndex++;
         Main.Instance.player.SetProgress(ProgressIndex);
         SaveGame();
+        ProgressTriggers();
+    }
+
+    private void ProgressTriggers() // Trigger an event at some progress number
+    {
+        if(ProgressIndex == 1)
+        {
+            //Start Story
+        }
     }
 
     private void SaveGame()
