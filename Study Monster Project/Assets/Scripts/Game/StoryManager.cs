@@ -54,7 +54,7 @@ public class StoryManager : MonoBehaviour {
                 NextScene();
                 if (CurrentStory.StoryScenes.Length - 2 == SceneNumber)
                 {
-                    LastScene();
+                    //LastScene
                 }
             }
             else
@@ -78,11 +78,6 @@ public class StoryManager : MonoBehaviour {
         DialogueNumber = 0;
         NextDialogue(DialogueNumber);
         StoryImage.sprite = CurrentScene.image;
-    }
-
-    private void LastScene()
-    {
-        Debug.Log("Last Scene, might as well start loading Game or somethng. Delete if not needed.");
     }
 
     private void Close()

@@ -72,7 +72,7 @@ public class Player : MonoBehaviour {
         ProgressIndex = GameData.ProgressIndex;
     }
 
-    public void GetSaveStatus(out bool save1, out bool save2, out bool save3)
+    public void GetSaveStatus(out bool save1, out bool save2, out bool save3) // Check which saves exist and which are empty
     {
         save3 = save2 = save1 = false;
         if(PlayerDataExist())
@@ -168,4 +168,5 @@ public class PlayerSave
 public class GameSave
 {
     public int ProgressIndex;
+    public int SceneLocation;
 }

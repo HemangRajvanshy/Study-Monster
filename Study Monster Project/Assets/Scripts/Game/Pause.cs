@@ -18,11 +18,13 @@ public class Pause : MonoBehaviour {
         if (paused)
         {
             paused = false;
+            Time.timeScale = 0f;
             PausePanel.SetActive(false);
         }
         else
         {
             paused = true;
+            Time.timeScale = 1f;
             PausePanel.SetActive(true);
         }
     }

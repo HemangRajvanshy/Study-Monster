@@ -31,8 +31,10 @@ public class GameManager : MonoBehaviour {
     {
         state = GameState.Game;
         ProgressIndex = Main.Instance.player.GameData.ProgressIndex;
+        int SceneLocation = Main.Instance.player.GameData.SceneLocation;
         if (ProgressIndex == 0)
             IncrementProgress();
+        Main.Instance.SceneMgr.LoadAdditiveScene("01-Start");
     }
 
     #endregion
@@ -62,8 +64,7 @@ public class GameManager : MonoBehaviour {
             case GameState.Story:
                 StoryManager.OnClick();
                 break;
-            default:
-                Debug.Log("Stray Click.");
+            case GameState.Game:
                 break;
         }
     }

@@ -11,13 +11,13 @@ public class Main : MonoBehaviour {
     public GameObject LoadScreen;
     public BackButton Back;
     public Player player;
+    public SceneLoadManager SceneMgr;
 
     public PlayerSave PlayerData { get { return player.PlayerData; } }
 
     #region UnityMethods
     void Awake()
     {
-
         DontDestroyOnLoad(gameObject);
 
         if (Instance == null)
@@ -35,18 +35,12 @@ public class Main : MonoBehaviour {
 
     public void LoadGameScene()
     {
-        ShowLoadingScreen("Game");
-        if (MusicMgr.GameBgMusic)
-            MusicMgr.Play(MusicMgr.GameBgMusic);
-        SceneManager.LoadScene("Game");
+        SceneMgr.LoadGameScene();
     }
 
     public void LoadMenuScene()
     {
-        ShowLoadingScreen("Menu");
-        if (MusicMgr.MenuBgMusic)
-            MusicMgr.Play(MusicMgr.MenuBgMusic);
-        SceneManager.LoadScene("Menu");
+        SceneMgr.LoadMenuScene();
     }
 
     public void SavePlayerProgress(int PIndex)
@@ -62,22 +56,10 @@ public class Main : MonoBehaviour {
         }
     }
 
-    #endregion
-
-    #region privateMethods
-
-    private void Init()
-    {
-        player.Init(); // Load the game from save.
-
-        MusicMgr.Initialize(); // Setup Audio
-        SfxMgr.Initialize();
-    }
-
     #region Loading
     private AsyncOperation async;
 
-    private void ShowLoadingScreen(string Level)
+    public void ShowLoadingScreen(string Level)
     {
         LoadScreen.SetActive(true);
         StartCoroutine(WaitToLoad(Level));
@@ -93,6 +75,18 @@ public class Main : MonoBehaviour {
         LoadScreen.SetActive(false);
     }
     #endregion
+
+    #endregion
+
+    #region privateMethods
+
+    private void Init()
+    {
+        player.Init(); // Load the game from save.
+
+        MusicMgr.Initialize(); // Setup Audio
+        SfxMgr.Initialize();
+    }
 
     #endregion
 }

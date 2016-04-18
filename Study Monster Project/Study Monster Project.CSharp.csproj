@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Common\Main.cs" />
     <Compile Include="Assets\Scripts\Common\MusicManager.cs" />
     <Compile Include="Assets\Scripts\Common\Player.cs" />
+    <Compile Include="Assets\Scripts\Common\SceneLoadManager.cs" />
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
