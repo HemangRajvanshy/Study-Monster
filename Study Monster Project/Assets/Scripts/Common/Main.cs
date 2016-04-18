@@ -50,7 +50,7 @@ public class Main : MonoBehaviour {
 
     public void OnClick(UnityEngine.EventSystems.RaycastResult result)
     {
-        if (SceneManager.GetActiveScene().name == "Game")
+        if (SceneManager.GetActiveScene().name != "Menu")
         {
             GameManager.Instance.OnClick(result);
         }
