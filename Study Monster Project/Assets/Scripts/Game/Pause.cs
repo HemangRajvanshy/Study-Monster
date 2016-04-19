@@ -5,6 +5,8 @@ public class Pause : MonoBehaviour {
 
     public GameObject PausePanel;
 
+    public bool Paused { get { return paused; } }
+
     private bool paused;
 
 	void Start ()

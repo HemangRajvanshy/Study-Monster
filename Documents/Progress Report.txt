@@ -1,0 +1,7 @@
+18th April:
+	Made scene cut system.
+	Character controller wip.
+	aspect ratio.
+	
+19th April:
+	
