@@ -4,4 +4,6 @@
 	aspect ratio.
 	
 19th April:
+	Made Player & Character Controller
+	Thought of additional game concept.
 	

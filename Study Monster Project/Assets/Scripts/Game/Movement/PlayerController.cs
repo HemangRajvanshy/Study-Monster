@@ -67,7 +67,7 @@ public class PlayerController : CharacterController {
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                normalizedHorizontalSpeed = -1;
+                normalizedHorizontalSpeed = -1; 
                 if (transform.localScale.x > 0f)
                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
