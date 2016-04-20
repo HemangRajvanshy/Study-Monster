@@ -55,12 +55,18 @@ public class PlayerController : CharacterController {
             {
                 move(Vector2.right, TilesPerSecond);
 
+                if (transform.localScale.x < 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 move(Vector2.left, TilesPerSecond);
+
+                if (transform.localScale.x > 0f)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));

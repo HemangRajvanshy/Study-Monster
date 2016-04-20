@@ -58,7 +58,5 @@ Players, on encounter with a problem, will be able to choose between solve and r
 
 CHALLENGES:
 
-1) What should problem monsters look like? Should they be the problem themselves or a person? An Examiner or something?
+1) What should problem monsters look like? Should they be the problem themselves or a person? An Examiner or something else?
 
-2) In my personal experience in school, I have learned something:
-People do not study in their freetime in school. When I ask them why they don't, and tell them that they could do better things at home if they study now, I have been told that my logic is flawed. They tell me that even if they study in school, they'd still have to study at home because of their parents. They have set number of study hours that they have to go through, willingly or otherwise. It just so happens that these people (a majority, i'd guess) would not want to play this game because playing games would count towards their recreation time and not study time. Therefore they would rather choose to not do anything related to studies in that precious time of theirs.
