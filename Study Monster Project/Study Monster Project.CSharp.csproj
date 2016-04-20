@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\InGameDialogue.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\CharacterController.cs" />
+    <Compile Include="Assets\Scripts\Game\Movement\CharacterControllerObsolete.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\NPCController.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Game\Pause.cs" />

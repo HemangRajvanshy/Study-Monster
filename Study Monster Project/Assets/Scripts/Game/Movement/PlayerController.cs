@@ -3,15 +3,10 @@ using System.Collections;
 
 public class PlayerController : CharacterController {
 
-    public float runSpeed = 8f;
-    public float groundDamping = 20f; // how fast do we change direction? higher means faster
-
-    private float normalizedHorizontalSpeed = 0;
-    private float normalizedVerticalSpeed = 0;
+    public int TilesPerSecond = 1;
 
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
-    private Vector3 _velocity;
 
     new void Awake()
     {
@@ -58,51 +53,38 @@ public class PlayerController : CharacterController {
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                normalizedHorizontalSpeed = 1;
-                if (transform.localScale.x < 0f)
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                move(Vector2.right, TilesPerSecond);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                normalizedHorizontalSpeed = -1; 
-                if (transform.localScale.x > 0f)
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                move(Vector2.left, TilesPerSecond);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));
             }
             else if (Input.GetKey(KeyCode.UpArrow))
             {
-                normalizedVerticalSpeed = 1;
+                move(Vector2.up, TilesPerSecond);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("RunUP"));
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                normalizedVerticalSpeed = -1;
+                move(Vector2.down, TilesPerSecond);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("RunDown"));
             }
             else
             {
-                normalizedHorizontalSpeed = 0;
-                normalizedVerticalSpeed = 0;
-
+                //Don't move               
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Idle"));
             }
-
-            _velocity.x = Mathf.Lerp(_velocity.x, normalizedHorizontalSpeed * runSpeed, Time.deltaTime * groundDamping);
-            _velocity.y = Mathf.Lerp(_velocity.y, normalizedVerticalSpeed * runSpeed, Time.deltaTime * groundDamping);
-
-            move(_velocity * Time.deltaTime);
-
-            _velocity = velocity; //Get current velocity from Chara Controller   
         }   
     }
 }
