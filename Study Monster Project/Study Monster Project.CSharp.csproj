@@ -78,8 +78,10 @@
     <Compile Include="Assets\Scripts\Common\SceneLoadManager.cs" />
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug.cs" />
+    <Compile Include="Assets\Scripts\Game\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\InGameDialogue.cs" />
+    <Compile Include="Assets\Scripts\Game\Interactable.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\CharacterController.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\CharacterControllerObsolete.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\NPCController.cs" />

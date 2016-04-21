@@ -51,7 +51,7 @@ public class PlayerController : CharacterController {
     {
         if (!GameManager.Instance.Pause.Paused)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) && CheckRight())
             {
                 move(Vector2.right, TilesPerSecond);
 
@@ -61,7 +61,7 @@ public class PlayerController : CharacterController {
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow) && CheckLeft())
             {
                 move(Vector2.left, TilesPerSecond);
 
@@ -71,14 +71,14 @@ public class PlayerController : CharacterController {
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));
             }
-            else if (Input.GetKey(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.UpArrow) && CheckUp())
             {
                 move(Vector2.up, TilesPerSecond);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("RunUP"));
             }
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow) && CheckDown())
             {
                 move(Vector2.down, TilesPerSecond);
 
@@ -92,5 +92,71 @@ public class PlayerController : CharacterController {
                     _animator.Play(Animator.StringToHash("Idle"));
             }
         }   
+    }
+
+
+    private bool CheckUp()
+    {
+       
+        var hit = Physics2D.Raycast(transform.position, Vector2.up, 1f);
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
+                    return false;
+            }
+        }
+       
+        return true;
+    }
+
+    private bool CheckDown()
+    {
+        var hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
+                    return false;
+            }
+        }
+        
+        return true;
+    }
+
+    private bool CheckRight()
+    {
+        var hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
+
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
+                    return false;
+            }
+        }
+      
+        return true;
+    }
+
+    private bool CheckLeft()
+    {
+        var hit = Physics2D.Raycast(transform.position, Vector2.left, 1f);
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
+                    return false;
+            }
+        }
+        return true;
     }
 }
