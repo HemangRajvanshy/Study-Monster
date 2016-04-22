@@ -9,6 +9,7 @@ public class DialogueSystem : MonoBehaviour {
     public Text Dialogue;
 
     private TextType TextType;
+    private int DialogueIndex = 0;
 
     void Start()
     {
@@ -16,13 +17,31 @@ public class DialogueSystem : MonoBehaviour {
         TextType = GameManager.Instance.TextType;
     }
 
-    public void Say(List<string> dialogues)
+    public bool Say(List<string> dialogues)
     {
         if (!TextType.Typing)
         {
-            TextBox.SetActive(true);
-            StartCoroutine(TextType.TypeText(Dialogue, dialogues[0]));
+            if (DialogueIndex < dialogues.Count)
+            {
+                TextBox.SetActive(true);
+                StartCoroutine(TextType.TypeText(Dialogue, dialogues[DialogueIndex]));
+                DialogueIndex++;
+                return true; 
+            }
+            else
+            {
+                //Talking has concluded. Disable the text box and tell player to get going. Also reset for use again.
+                TextBox.SetActive(false);
+                DialogueIndex = 0;
+                return false;
+            }
         }
+        else
+        {
+            TextType.StopTyping();
+        }
+   
+        return true;
     }
 
     private IEnumerator WaitWhileTyping()

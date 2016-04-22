@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerController : CharacterController {
 
     public int TilesPerSecond = 1;
+    public GameObject PlayerSprite;
 
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
@@ -36,14 +37,12 @@ public class PlayerController : CharacterController {
 
     void TriggerEnterEvent(Collider2D col)
     {
-        Debug.Log("onTriggerEnterEvent: " + col.gameObject.name);
         if (col.gameObject.GetComponent<IInteractable>() != null)
             InteractingWith = col.gameObject.GetComponent<IInteractable>();
     }
 
     void TriggerExitEvent(Collider2D col)
     {
-        Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
         if (col.gameObject.GetComponent<IInteractable>() != null && col.gameObject.GetComponent<IInteractable>() == InteractingWith)
             InteractingWith = null;
     }
@@ -55,10 +54,11 @@ public class PlayerController : CharacterController {
     {
         if (!GameManager.Instance.Pause.Paused)
         {
-            if (Input.GetKey(KeyCode.Z)) // KEY CODE TO BE CHANGED
+            if (Input.GetKeyDown(KeyCode.Z)) // KEY CODE TO BE CHANGED
                 HandleInteraction();
 
-            HandleMovement();
+            if (!Talking)
+                HandleMovement();
         }   
     }
 
@@ -66,7 +66,7 @@ public class PlayerController : CharacterController {
     {
         if(InteractingWith != null)
         {
-            GameManager.Instance.Dialogue.Say(InteractingWith.Interact());
+            Talking = GameManager.Instance.Dialogue.Say(InteractingWith.Interact());
         }
     }
 
@@ -76,8 +76,8 @@ public class PlayerController : CharacterController {
         {
             move(Vector2.right, TilesPerSecond);
 
-            if (transform.localScale.x < 0f)
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            if (PlayerSprite.transform.localScale.x < 0f)
+                PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
 
             if (_animator)
                 _animator.Play(Animator.StringToHash("Run"));
@@ -86,8 +86,8 @@ public class PlayerController : CharacterController {
         {
             move(Vector2.left, TilesPerSecond);
 
-            if (transform.localScale.x > 0f)
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            if (PlayerSprite.transform.localScale.x > 0f)
+                PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
 
             if (_animator)
                 _animator.Play(Animator.StringToHash("Run"));
