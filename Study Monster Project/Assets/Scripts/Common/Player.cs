@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
     public void ResetGameSave(int SaveNum)
     {
         GameData.ProgressIndex = 0;
+        GameData.SceneLocation = "01-Start";
 
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour {
     public void SaveGame() // Save the current GameData to permanent memory.
     {
         GameData.ProgressIndex = ProgressIndex;
+        GameData.SceneLocation = Main.Instance.SceneMgr.ActiveScene;
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/game" + ActiveSaveNumber.ToString() + ".dat");
@@ -168,5 +170,5 @@ public class PlayerSave
 public class GameSave
 {
     public int ProgressIndex;
-    public int SceneLocation;
+    public string SceneLocation;
 }

@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour {
     {
         state = GameState.Game;
         ProgressIndex = Main.Instance.player.GameData.ProgressIndex;
-        int SceneLocation = Main.Instance.player.GameData.SceneLocation;
+        string SceneLocation = Main.Instance.player.GameData.SceneLocation;
         if (ProgressIndex == 0)
             IncrementProgress();
-        Main.Instance.SceneMgr.LoadAdditiveScene("01-Start"); Debug.Log("TODO: Save scene location and load from it");
+        Main.Instance.SceneMgr.LoadAdditiveScene(SceneLocation);
     }
 
     #endregion

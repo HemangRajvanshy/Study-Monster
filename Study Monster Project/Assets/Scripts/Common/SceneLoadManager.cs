@@ -6,6 +6,8 @@ using System.Collections;
 //Load and also unload Manager.
 public class SceneLoadManager : MonoBehaviour {
 
+    public string ActiveScene { get { return SceneManager.GetActiveScene().name; } } 
+
     private List<Scene> ActiveScenes;
 
     public void LoadGameScene()
