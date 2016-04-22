@@ -35,8 +35,13 @@ is to reach the end of the trials of [] and get the exit pass. Before you ask, I
 
 1) Friendly people with the ideology (not explicitly stated) that education should be free to all, and that everyone has equal right to it.
 These are the people that would teach Protag throughout the journey and help him complete the TB. They will also give all the tutorials throughout the game. They will have their own buildings in most towns.
+(They represent the TB content and example problems)
+
+
 2) Neutral people, town dweller type, shopkeepers maybe. (No specific purpose yet.)
+
 3) People with ideology ( not explicitly stated in game again) that only the elite few should have the privellege of education. These NPCs will aim to hinder protag throughout the game. These are the people who protag will have to defeat in order to move from one town to the next. (the gym leaders and monsters.) They'd guard passage between towns and will only let the protag through once he gets the permission from the specific towns authority. (ie by defeating them. Or proving his learnings)
+(They represent the excersise portion at the back of the book; and maybe also a mock exam at the end of book.)
 
 (Something about completing the textbook to escape, [Protag might as a side-effect, end up becoming top of class student from being a deliquent or an average student]).
 
@@ -51,7 +56,15 @@ Each problem will be broken into a number of steps(say 4) At each step you will 
 Wrong answer will deal damage to the player, and the player would be given the option to choose from the remaining 3 options.
 Players, on encounter with a problem, will be able to choose between solve and run to study(or something like that) [similar to how pokemon has fight, run etc.]
 
+Learning part: (Uncertain; subject to change)
+The learning might be done with the actual pages of the textbook provided by type one NPCs.
+The page would contain all the essential information plus links to sites like Khanacademy and purple math for additional reference.
+This would be reinforced in practice (analogous to solving example problem) battles with NPC type 1 that don't deal much damage but teach in a friendly manner unlike NPC type 3.
 
+
+Gameplay idea:
+For some graph related math problems (like finding the x or y intercept) we can have say, a special ground with holes representing integer coordinates and 2 axes painted on the ground. 
+The protag will have to solve the problem and go to right spot to do something. (Like stab a pole down that hole or something) if he's wrong he gets a shock out of that hole or something. This he does to open doors from one room to the other.
 
 
 
