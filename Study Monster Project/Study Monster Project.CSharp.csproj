@@ -78,6 +78,9 @@
     <Compile Include="Assets\Scripts\Common\SceneLoadManager.cs" />
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug.cs" />
+    <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\BattleManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\PlayerCombatant.cs" />
+    <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\StudyCombatant.cs" />
     <Compile Include="Assets\Scripts\Game\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\InGameDialogue.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="Assets\Scripts\Game\Story.cs" />
     <Compile Include="Assets\Scripts\Game\StoryManager.cs" />
     <Compile Include="Assets\Scripts\Game\TextType.cs" />
+    <Compile Include="Assets\Scripts\Game\WorldObject.cs" />
     <Compile Include="Assets\Scripts\Menu\Menu_UI.cs" />
     <Compile Include="Assets\Scripts\Menu\PlayPanel.cs" />
     <Compile Include="Assets\Scripts\Menu\QuitScript.cs" />

@@ -86,4 +86,66 @@ public class CharacterController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         moving = false;
     }
+
+    protected bool CheckUp()
+    {
+
+        var hit = Physics2D.Raycast(transform.position, Vector2.up, 1f);
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    protected bool CheckDown()
+    {
+        var hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    protected bool CheckRight()
+    {
+        var hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
+
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    protected bool CheckLeft()
+    {
+        var hit = Physics2D.Raycast(transform.position, Vector2.left, 1f);
+        if (hit)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>() != null)
+            {
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                    return false;
+            }
+        }
+        return true;
+    }
+
 }

@@ -114,65 +114,6 @@ public class PlayerController : CharacterController {
         }
     }
 
-    private bool CheckUp()
-    {
-       
-        var hit = Physics2D.Raycast(transform.position, Vector2.up, 1f);
-        if (hit)
-        {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
-                    return false;
-            }
-        }
-       
-        return true;
-    }
 
-    private bool CheckDown()
-    {
-        var hit = Physics2D.Raycast(transform.position, Vector2.down, 1f);
-        if (hit)
-        {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
-                    return false;
-            }
-        }
-        
-        return true;
-    }
-
-    private bool CheckRight()
-    {
-        var hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
-
-        if (hit)
-        {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
-                    return false;
-            }
-        }
-      
-        return true;
-    }
-
-    private bool CheckLeft()
-    {
-        var hit = Physics2D.Raycast(transform.position, Vector2.left, 1f);
-        if (hit)
-        {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
-                    return false;
-            }
-        }
-        return true;
-    }
 
 }
