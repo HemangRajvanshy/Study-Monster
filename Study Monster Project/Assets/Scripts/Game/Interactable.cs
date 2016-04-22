@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class Interactable: MonoBehaviour, IInteractable {
 
-    public void Interact()
+    public List<string> Dialogue = new List<string>();
+
+    public List<string> Interact()
     {
-        Debug.Log("Interacting With: " + gameObject.name);
+        return Dialogue;
     }
 }
 
 
 public interface IInteractable
 {
-    void Interact();
+    List<string> Interact();
 }

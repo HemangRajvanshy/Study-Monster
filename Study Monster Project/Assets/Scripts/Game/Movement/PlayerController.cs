@@ -7,6 +7,9 @@ public class PlayerController : CharacterController {
 
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
+    private IInteractable InteractingWith;
+
+    private bool Talking = false;
 
     new void Awake()
     {
@@ -25,23 +28,24 @@ public class PlayerController : CharacterController {
     void onControllerCollider(RaycastHit2D hit)
     {
         // bail out on plain old ground hits cause they arent very interesting
-        if (hit.normal.y == 1f)
-            return;
-
+        //if (hit.normal.y == 1f)
+        //    return;
         // logs any collider hits if uncommented. it gets noisy so it is commented out for the demo
         //Debug.Log( "flags: " + _controller.collisionState + ", hit.normal: " + hit.normal );
     }
 
-
     void TriggerEnterEvent(Collider2D col)
     {
         Debug.Log("onTriggerEnterEvent: " + col.gameObject.name);
+        if (col.gameObject.GetComponent<IInteractable>() != null)
+            InteractingWith = col.gameObject.GetComponent<IInteractable>();
     }
-
 
     void TriggerExitEvent(Collider2D col)
     {
         Debug.Log("onTriggerExitEvent: " + col.gameObject.name);
+        if (col.gameObject.GetComponent<IInteractable>() != null && col.gameObject.GetComponent<IInteractable>() == InteractingWith)
+            InteractingWith = null;
     }
 
     #endregion
@@ -51,49 +55,64 @@ public class PlayerController : CharacterController {
     {
         if (!GameManager.Instance.Pause.Paused)
         {
-            if (Input.GetKey(KeyCode.RightArrow) && CheckRight())
-            {
-                move(Vector2.right, TilesPerSecond);
+            if (Input.GetKey(KeyCode.Z)) // KEY CODE TO BE CHANGED
+                HandleInteraction();
 
-                if (transform.localScale.x < 0f)
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("Run"));
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow) && CheckLeft())
-            {
-                move(Vector2.left, TilesPerSecond);
-
-                if (transform.localScale.x > 0f)
-                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("Run"));
-            }
-            else if (Input.GetKey(KeyCode.UpArrow) && CheckUp())
-            {
-                move(Vector2.up, TilesPerSecond);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("RunUP"));
-            }
-            else if (Input.GetKey(KeyCode.DownArrow) && CheckDown())
-            {
-                move(Vector2.down, TilesPerSecond);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("RunDown"));
-            }
-            else
-            {
-                //Don't move               
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("Idle"));
-            }
+            HandleMovement();
         }   
     }
 
+    private void HandleInteraction()
+    {
+        if(InteractingWith != null)
+        {
+            GameManager.Instance.Dialogue.Say(InteractingWith.Interact());
+        }
+    }
+
+    private void HandleMovement()
+    {
+        if (Input.GetKey(KeyCode.RightArrow) && CheckRight())
+        {
+            move(Vector2.right, TilesPerSecond);
+
+            if (transform.localScale.x < 0f)
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+            if (_animator)
+                _animator.Play(Animator.StringToHash("Run"));
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow) && CheckLeft())
+        {
+            move(Vector2.left, TilesPerSecond);
+
+            if (transform.localScale.x > 0f)
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+            if (_animator)
+                _animator.Play(Animator.StringToHash("Run"));
+        }
+        else if (Input.GetKey(KeyCode.UpArrow) && CheckUp())
+        {
+            move(Vector2.up, TilesPerSecond);
+
+            if (_animator)
+                _animator.Play(Animator.StringToHash("RunUP"));
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && CheckDown())
+        {
+            move(Vector2.down, TilesPerSecond);
+
+            if (_animator)
+                _animator.Play(Animator.StringToHash("RunDown"));
+        }
+        else
+        {
+            //Don't move               
+            if (_animator)
+                _animator.Play(Animator.StringToHash("Idle"));
+        }
+    }
 
     private bool CheckUp()
     {
@@ -103,7 +122,6 @@ public class PlayerController : CharacterController {
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                Debug.Log(hit.transform.gameObject.name);
                 if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
                     return false;
             }
@@ -119,7 +137,6 @@ public class PlayerController : CharacterController {
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                Debug.Log(hit.transform.gameObject.name);
                 if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
                     return false;
             }
@@ -136,7 +153,6 @@ public class PlayerController : CharacterController {
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                Debug.Log(hit.transform.gameObject.name);
                 if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
                     return false;
             }
@@ -152,11 +168,11 @@ public class PlayerController : CharacterController {
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                Debug.Log(hit.transform.gameObject.name);
                 if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName == "WorldObjects")
                     return false;
             }
         }
         return true;
     }
+
 }

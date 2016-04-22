@@ -18,7 +18,7 @@ public class TextType : MonoBehaviour {
             if (Typing)
             {
                 Dialogue.text += letter;
-                if (Main.Instance.SfxMgr.TypingSfx)
+                if (Main.Instance.SfxMgr.TypingSfx != null)
                     Main.Instance.SfxMgr.Play(Main.Instance.SfxMgr.TypingSfx);
                 if (letter == '.' || letter == '?')
                     yield return new WaitForSeconds(0.1f);

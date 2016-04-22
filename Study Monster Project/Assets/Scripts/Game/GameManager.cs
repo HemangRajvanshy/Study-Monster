@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 
     public Pause Pause;
     public TextType TextType;
+    public DialogueSystem Dialogue;
     public StoryManager StoryManager;
 
     private int ProgressIndex;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour {
         int SceneLocation = Main.Instance.player.GameData.SceneLocation;
         if (ProgressIndex == 0)
             IncrementProgress();
-        Main.Instance.SceneMgr.LoadAdditiveScene("01-Start");
+        Main.Instance.SceneMgr.LoadAdditiveScene("01-Start"); Debug.Log("TODO: Save scene location and load from it");
     }
 
     #endregion
