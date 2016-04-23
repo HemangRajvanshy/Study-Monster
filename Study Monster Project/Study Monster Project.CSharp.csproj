@@ -79,7 +79,9 @@
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
     <Compile Include="Assets\Scripts\Debug\Debug.cs" />
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\BattleManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\EnemyCombatant.cs" />
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\PlayerCombatant.cs" />
+    <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\ProblemManager.cs" />
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\StudyCombatant.cs" />
     <Compile Include="Assets\Scripts\Game\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />

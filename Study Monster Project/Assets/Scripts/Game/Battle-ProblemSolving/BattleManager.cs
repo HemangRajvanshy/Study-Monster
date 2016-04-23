@@ -4,12 +4,13 @@ using System.Collections;
 
 public class BattleManager : MonoBehaviour {
 
-    public Canvas BattleCanvas; 
-        
+    public Canvas BattleCanvas;
+    public ProblemManager ProblemManager;    
+
     public PlayerCombatant Player;
     public Image PlayerHealthBar;
 
-    private StudyCombatant EnemyCombatant;
+    private EnemyCombatant EnemyCombatant;
     public Image EnemyHealthBar;
     
     void Start()
@@ -17,9 +18,10 @@ public class BattleManager : MonoBehaviour {
         BattleCanvas.enabled = false;
         //var com = new StudyCombatant();
         //InitializeCombat(com);
+        Debug.Log("x\xB2");
     }
 
-    public void InitializeCombat(StudyCombatant Combatant)
+    public void InitializeCombat(EnemyCombatant Combatant)
     {
         BattleCanvas.enabled = true;
 
@@ -28,9 +30,14 @@ public class BattleManager : MonoBehaviour {
         UpdateHealth(EnemyHealthBar, EnemyCombatant.Health);
     }
 
-    private void EndCombat(bool win)
+    public void UpdateCombat(bool Correct)
     {
 
+    }
+
+    private void EndCombat(bool win)
+    {
+        BattleCanvas.enabled = false;
     }
 
     private void UpdateHealth(Image HealthBar, int Health)
