@@ -20,6 +20,7 @@ public class ProblemManager : MonoBehaviour {
 
     private EnemyCombatant EnemyCombatant;
     private Problem Problem;
+    private int CurrentPart;
 
     private UnityAction CorrectAnswer;
     private UnityAction WrongAnswer;
@@ -40,7 +41,8 @@ public class ProblemManager : MonoBehaviour {
         EnemyCombatant = Enemy;
         Problem = Enemy.problem;
         ProblemText.text = Enemy.problem.ProblemText;
-        SetupOptions(0);
+        CurrentPart = 0;
+        SetupOptions(CurrentPart);
     }
 
     private void SetupOptions(int Part)
@@ -53,24 +55,44 @@ public class ProblemManager : MonoBehaviour {
                 Option2Text.text = Problem.Parts[Part].Option1;
                 Option3Text.text = Problem.Parts[Part].Option2;
                 Option4Text.text = Problem.Parts[Part].Option3;
+
+                Option1.onClick.AddListener(CorrectAnswer);
+                Option2.onClick.AddListener(WrongAnswer);
+                Option3.onClick.AddListener(WrongAnswer);
+                Option4.onClick.AddListener(WrongAnswer);
                 break;
             case 2:
                 Option2Text.text = Problem.Parts[Part].Correct;
                 Option1Text.text = Problem.Parts[Part].Option1;
                 Option3Text.text = Problem.Parts[Part].Option2;
                 Option4Text.text = Problem.Parts[Part].Option3;
+
+                Option1.onClick.AddListener(WrongAnswer);
+                Option2.onClick.AddListener(CorrectAnswer);
+                Option3.onClick.AddListener(WrongAnswer);
+                Option4.onClick.AddListener(WrongAnswer);
                 break;
             case 3:
                 Option3Text.text = Problem.Parts[Part].Correct;
                 Option2Text.text = Problem.Parts[Part].Option1;
                 Option1Text.text = Problem.Parts[Part].Option2;
                 Option4Text.text = Problem.Parts[Part].Option3;
+
+                Option1.onClick.AddListener(WrongAnswer);
+                Option2.onClick.AddListener(WrongAnswer);
+                Option3.onClick.AddListener(CorrectAnswer);
+                Option4.onClick.AddListener(WrongAnswer);
                 break;
             case 4:
                 Option4Text.text = Problem.Parts[Part].Correct;
                 Option2Text.text = Problem.Parts[Part].Option1;
                 Option3Text.text = Problem.Parts[Part].Option2;
                 Option1Text.text = Problem.Parts[Part].Option3;
+
+                Option1.onClick.AddListener(WrongAnswer);
+                Option2.onClick.AddListener(WrongAnswer);
+                Option3.onClick.AddListener(WrongAnswer);
+                Option4.onClick.AddListener(CorrectAnswer);
                 break;
         }
     }
@@ -82,6 +104,7 @@ public class ProblemManager : MonoBehaviour {
 
     void Wrong()
     {
+        //EventSystem.current.currentSelectedGameObject.name
         Debug.Log("TODO: Wrong Answer");
     }
 }

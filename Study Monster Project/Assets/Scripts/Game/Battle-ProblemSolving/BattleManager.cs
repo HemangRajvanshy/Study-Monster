@@ -16,9 +16,6 @@ public class BattleManager : MonoBehaviour {
     void Start()
     {
         BattleCanvas.enabled = false;
-        //var com = new StudyCombatant();
-        //InitializeCombat(com);
-        Debug.Log("x\xB2");
     }
 
     public void InitializeCombat(EnemyCombatant Combatant)
@@ -28,6 +25,8 @@ public class BattleManager : MonoBehaviour {
         EnemyCombatant = Combatant;
         UpdateHealth(PlayerHealthBar, Player.Health);
         UpdateHealth(EnemyHealthBar, EnemyCombatant.Health);
+
+        ProblemManager.Init(EnemyCombatant);
     }
 
     public void UpdateCombat(bool Correct)

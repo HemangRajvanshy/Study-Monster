@@ -38,4 +38,8 @@ public class TextType : MonoBehaviour {
         Typing = false;
     }
 
+    public string DecodeText(string Text)
+    {
+        return "";
+    }
 }

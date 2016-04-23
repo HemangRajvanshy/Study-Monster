@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public TextType TextType;
     public DialogueSystem Dialogue;
     public StoryManager StoryManager;
+    public BattleManager BattleManager;
 
     private int ProgressIndex;
     private GameState state;

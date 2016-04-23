@@ -9,6 +9,7 @@ public class PlayerController : CharacterController {
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
     private IInteractable InteractingWith;
+    private GameObject InteractingNPC;
 
     private bool Talking = false;
 
@@ -38,13 +39,21 @@ public class PlayerController : CharacterController {
     void TriggerEnterEvent(Collider2D col)
     {
         if (col.gameObject.GetComponent<IInteractable>() != null)
+        {
             InteractingWith = col.gameObject.GetComponent<IInteractable>();
+            if (col.gameObject.GetComponent<NPCController>() != null)
+                InteractingNPC = col.gameObject;
+        }
     }
 
     void TriggerExitEvent(Collider2D col)
     {
         if (col.gameObject.GetComponent<IInteractable>() != null && col.gameObject.GetComponent<IInteractable>() == InteractingWith)
+        {
             InteractingWith = null;
+            if (col.gameObject.GetComponent<NPCController>() != null && col.gameObject.GetComponent<NPCController>() == InteractingNPC)
+                InteractingNPC = null;
+        }
     }
 
     #endregion
@@ -62,11 +71,24 @@ public class PlayerController : CharacterController {
         }   
     }
 
+    public void Talk(IInteractable Interact)
+    {
+        Talking = GameManager.Instance.Dialogue.Say(InteractingWith.Interact());
+        if(!Talking && InteractingNPC != null)
+        {
+            if(InteractingNPC.GetComponent<NPCController>().Combatant) // Also somehow check if we have already fought before or not.
+            {
+                //Start Fighting!
+                GameManager.Instance.BattleManager.InitializeCombat(InteractingNPC.GetComponent<EnemyCombatant>());
+            }
+        }
+    }
+
     private void HandleInteraction()
     {
         if(InteractingWith != null)
         {
-            Talking = GameManager.Instance.Dialogue.Say(InteractingWith.Interact());
+            Talk(InteractingWith);
         }
     }
 

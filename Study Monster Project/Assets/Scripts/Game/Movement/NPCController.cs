@@ -9,6 +9,7 @@ public class NPCController : CharacterController, IInteractable {
     public float DelayBetweenMovements = 1f;
     public int MoveFreedom = 2;
     public bool AutoTalk = false;
+    public bool Combatant = false;
 
     private Animator _animator;
     [SerializeField]
@@ -28,14 +29,17 @@ public class NPCController : CharacterController, IInteractable {
 
     void Start()
     {
-        DelayBetweenMovements = 1 / DelayBetweenMovements; // Make it so that I can pass it to CharController.move()
+        DelayBetweenMovements = 1 / DelayBetweenMovements; // Making it so that I can pass it to CharController.move()
         _animator = GetComponent<Animator>();
         onTriggerEnterEvent += TriggerEnter;
     }
 
     void TriggerEnter(Collider2D col)
     {
-
+        if(AutoTalk)
+        {
+            //talk
+        }
     }
 
     public List<string> Interact()
