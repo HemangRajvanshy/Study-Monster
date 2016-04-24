@@ -23,18 +23,31 @@ public class BattleManager : MonoBehaviour {
         BattleCanvas.enabled = true;
 
         EnemyCombatant = Combatant;
-        UpdateHealth(PlayerHealthBar, Player.Health);
-        UpdateHealth(EnemyHealthBar, EnemyCombatant.Health);
+        UpdateHealth(PlayerHealthBar, Player.GetHealth());
+        UpdateHealth(EnemyHealthBar, EnemyCombatant.GetHealth());
 
         ProblemManager.Init(EnemyCombatant);
     }
 
     public void UpdateCombat(bool Correct)
     {
-
+        if(Correct)
+        {
+            EnemyCombatant.TakeDamage(EnemyCombatant.TotalHealth/EnemyCombatant.problem.Parts.Count);
+            UpdateHealth(EnemyHealthBar, EnemyCombatant.GetHealth());
+            if (EnemyCombatant.GetHealth() == 0)
+                EndCombat(true);
+        }
+        else
+        {
+            Player.TakeDamage(EnemyCombatant.GetDamage());
+            UpdateHealth(PlayerHealthBar, Player.GetHealth());
+            if (Player.GetHealth() == 0)
+                EndCombat(false);
+        }
     }
 
-    private void EndCombat(bool win)
+    public void EndCombat(bool win)
     {
         BattleCanvas.enabled = false;
     }

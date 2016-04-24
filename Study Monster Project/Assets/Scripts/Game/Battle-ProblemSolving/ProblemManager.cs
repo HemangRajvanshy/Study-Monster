@@ -5,7 +5,7 @@ using System.Collections;
 
 public class ProblemManager : MonoBehaviour {
 
-    public BattleManager BattleManager;
+    public BattleManager BattleMngr;
 
     public Text ProblemText;
     public Button Option1;
@@ -47,6 +47,7 @@ public class ProblemManager : MonoBehaviour {
 
     private void SetupOptions(int Part)
     {
+        SetupOptions();
         int correctOp = Random.Range(1, 5);
         switch(correctOp)
         {
@@ -97,15 +98,36 @@ public class ProblemManager : MonoBehaviour {
         }
     }
 
+    private void SetupOptions()
+    {
+        Option1.interactable = true;
+        Option1.onClick.RemoveAllListeners();
+        Option2.interactable = true;
+        Option2.onClick.RemoveAllListeners();
+        Option3.interactable = true;
+        Option3.onClick.RemoveAllListeners();
+        Option4.interactable = true;
+        Option4.onClick.RemoveAllListeners();
+    }
+
     void Correct()
     {
-        Debug.Log("TODO: Correct Answer");
+        if(CurrentPart < Problem.Parts.Count-1)
+        {
+            CurrentPart++;
+            BattleMngr.UpdateCombat(true);
+            SetupOptions(CurrentPart);
+        }
+        else
+        {
+            BattleMngr.UpdateCombat(true);
+        }
     }
 
     void Wrong()
     {
-        //EventSystem.current.currentSelectedGameObject.name
-        Debug.Log("TODO: Wrong Answer");
+        UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false; // Set the selected button to uninteractable
+        BattleMngr.UpdateCombat(false);
     }
 }
 

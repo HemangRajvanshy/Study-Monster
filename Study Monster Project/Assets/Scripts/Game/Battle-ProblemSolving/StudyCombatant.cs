@@ -4,7 +4,14 @@ using System.Collections;
 
 public class StudyCombatant : MonoBehaviour {
 
-    public int Health = 100;
+    public int TotalHealth = 100;
+
+    private int Health;
+
+    void Start()
+    {
+        Health = TotalHealth;
+    }
 
     public void TakeDamage(int damage)
     {
@@ -14,5 +21,10 @@ public class StudyCombatant : MonoBehaviour {
     public void HealDamage(int hp)
     {
         Health += hp;
+    }
+
+    public int GetHealth()
+    {
+        return Health;
     }
 }

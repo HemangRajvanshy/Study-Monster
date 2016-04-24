@@ -7,6 +7,14 @@ using System.Collections;
 public class EnemyCombatant : StudyCombatant {
 
     public Problem problem;
+    public int DamageUpperLim = 20;
+    public int DamageLowerLim = 10;
+
+    public int GetDamage()
+    {
+        int Damage = UnityEngine.Random.Range(DamageLowerLim, DamageUpperLim);
+        return Damage;
+    }
 
 }
 
