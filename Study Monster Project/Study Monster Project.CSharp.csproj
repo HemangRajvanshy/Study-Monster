@@ -91,6 +91,8 @@
     <Compile Include="Assets\Scripts\Game\Movement\NPCController.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Game\Pause.cs" />
+    <Compile Include="Assets\Scripts\Game\SceneBorder.cs" />
+    <Compile Include="Assets\Scripts\Game\SceneParam.cs" />
     <Compile Include="Assets\Scripts\Game\Story.cs" />
     <Compile Include="Assets\Scripts\Game\StoryManager.cs" />
     <Compile Include="Assets\Scripts\Game\TextType.cs" />

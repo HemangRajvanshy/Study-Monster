@@ -6,9 +6,8 @@ using System.Collections;
 //Load and also unload Manager.
 public class SceneLoadManager : MonoBehaviour {
 
-    public string ActiveScene { get { return SceneManager.GetActiveScene().name; } } 
-
-    private List<Scene> ActiveScenes;
+    public string ActiveScene { get { return SceneManager.GetActiveScene().name; } }
+    public List<string> LoadedAdditives = new List<string>();
 
     public void LoadGameScene()
     {
@@ -34,6 +33,7 @@ public class SceneLoadManager : MonoBehaviour {
     public void LoadAdditiveScene(string sceneName)
     {
         async = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        LoadedAdditives.Add(sceneName);
         StartCoroutine(WaitToLoad(sceneName));
     }
 
@@ -44,11 +44,17 @@ public class SceneLoadManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(Level));
-
+        SceneManager.GetActiveScene().GetRootGameObjects()[0].transform.position = new Vector3(0, 0, 0);
     }
 
-    public void UnloadAdditiveScene(int sceneIndex)
+    public void UnloadAdditiveScene(string sceneName)
     {
-        SceneManager.UnloadScene(sceneIndex);
+        SceneManager.UnloadScene(sceneName);
+        LoadedAdditives.Remove(sceneName);
+    }
+
+    public bool IsSceneLoaded(string SceneName)
+    {
+        return SceneManager.GetSceneByName(SceneName).isLoaded;
     }
 }

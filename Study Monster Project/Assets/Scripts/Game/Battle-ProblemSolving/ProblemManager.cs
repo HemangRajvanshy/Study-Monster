@@ -52,7 +52,7 @@ public class ProblemManager : MonoBehaviour {
         switch(correctOp)
         {
             case 1:
-                Option1Text.text = Problem.Parts[Part].Correct;
+                Option1Text.text = GameManager.Instance.TextType.DecodeText(Problem.Parts[Part].Correct);
                 Option2Text.text = Problem.Parts[Part].Option1;
                 Option3Text.text = Problem.Parts[Part].Option2;
                 Option4Text.text = Problem.Parts[Part].Option3;
@@ -63,7 +63,7 @@ public class ProblemManager : MonoBehaviour {
                 Option4.onClick.AddListener(WrongAnswer);
                 break;
             case 2:
-                Option2Text.text = Problem.Parts[Part].Correct;
+                Option2Text.text = GameManager.Instance.TextType.DecodeText(Problem.Parts[Part].Correct);
                 Option1Text.text = Problem.Parts[Part].Option1;
                 Option3Text.text = Problem.Parts[Part].Option2;
                 Option4Text.text = Problem.Parts[Part].Option3;
@@ -74,7 +74,7 @@ public class ProblemManager : MonoBehaviour {
                 Option4.onClick.AddListener(WrongAnswer);
                 break;
             case 3:
-                Option3Text.text = Problem.Parts[Part].Correct;
+                Option3Text.text = GameManager.Instance.TextType.DecodeText(Problem.Parts[Part].Correct);
                 Option2Text.text = Problem.Parts[Part].Option1;
                 Option1Text.text = Problem.Parts[Part].Option2;
                 Option4Text.text = Problem.Parts[Part].Option3;
@@ -85,7 +85,7 @@ public class ProblemManager : MonoBehaviour {
                 Option4.onClick.AddListener(WrongAnswer);
                 break;
             case 4:
-                Option4Text.text = Problem.Parts[Part].Correct;
+                Option4Text.text = GameManager.Instance.TextType.DecodeText(Problem.Parts[Part].Correct);
                 Option2Text.text = Problem.Parts[Part].Option1;
                 Option3Text.text = Problem.Parts[Part].Option2;
                 Option1Text.text = Problem.Parts[Part].Option3;

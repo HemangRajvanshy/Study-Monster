@@ -40,6 +40,8 @@ public class TextType : MonoBehaviour {
 
     public string DecodeText(string Text)
     {
-        return "";
+        // Convert the math symbols to actual visual Math. Some of it would be a pain to do. I am not even sure how I will do fractions.
+        string Result = Text;
+        return Result;
     }
 }
