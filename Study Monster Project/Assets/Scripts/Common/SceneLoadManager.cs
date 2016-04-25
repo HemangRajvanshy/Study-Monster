@@ -9,6 +9,8 @@ public class SceneLoadManager : MonoBehaviour {
     public string ActiveScene { get { return SceneManager.GetActiveScene().name; } }
     public List<string> LoadedAdditives = new List<string>();
 
+    private Scene PrevActive;
+
     public void LoadGameScene()
     {
         Main.Instance.ShowLoadingScreen("Game");
@@ -30,21 +32,47 @@ public class SceneLoadManager : MonoBehaviour {
     /// the boundary belongs.
     /// </summary>
     /// <param name="sceneIndex"></param>
-    public void LoadAdditiveScene(string sceneName)
+    public void LoadAdditiveScene(string sceneName, SceneBorder.BorderPosition borderPos = SceneBorder.BorderPosition.None)
     {
         async = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         LoadedAdditives.Add(sceneName);
-        StartCoroutine(WaitToLoad(sceneName));
+        StartCoroutine(WaitToLoad(sceneName, borderPos));
     }
 
-    IEnumerator WaitToLoad(string Level)
+    IEnumerator WaitToLoad(string Level, SceneBorder.BorderPosition borderPos = SceneBorder.BorderPosition.None)
     {
         while (!async.isDone)
         {
             yield return new WaitForEndOfFrame();
         }
+        PrevActive = SceneManager.GetActiveScene();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(Level));
-        SceneManager.GetActiveScene().GetRootGameObjects()[0].transform.position = new Vector3(0, 0, 0);
+        if(borderPos != SceneBorder.BorderPosition.None)
+            SetScenePosition(borderPos);
+    }
+
+    public void SetScenePosition(SceneBorder.BorderPosition borderPos)
+    {
+        GameObject SceneObject = SceneManager.GetActiveScene().GetRootGameObjects()[0];
+        GameObject PrevSceneObject = PrevActive.GetRootGameObjects()[0];
+        SceneParam SceneParm = SceneObject.GetComponent<SceneParam>();
+        SceneParam PrevSceneParm = PrevSceneObject.GetComponent<SceneParam>();
+
+        switch (borderPos)
+        {
+            case SceneBorder.BorderPosition.top:
+                SceneObject.transform.position = new Vector3(0, (-SceneParm.BottomBorder.transform.position.y+PrevSceneParm.TopBorder.transform.position.y), 0);
+                break;
+            case SceneBorder.BorderPosition.bottom:
+                SceneObject.transform.position = new Vector3(0, -(SceneParm.TopBorder.transform.position.y - PrevSceneParm.BottomBorder.transform.position.y), 0);
+                break;
+            case SceneBorder.BorderPosition.right:
+                SceneObject.transform.position = new Vector3((-SceneParm.LeftBorder.transform.position.x + PrevSceneParm.RightBorder.transform.position.x), 0, 0);
+                break;
+            case SceneBorder.BorderPosition.left:
+                SceneObject.transform.position = new Vector3(-(SceneParm.RightBorder.transform.position.x - PrevSceneParm.LeftBorder.transform.position.x), 0, 0);
+                break;
+        }
     }
 
     public void UnloadAdditiveScene(string sceneName)

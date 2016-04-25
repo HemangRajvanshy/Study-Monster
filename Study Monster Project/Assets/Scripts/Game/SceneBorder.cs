@@ -5,6 +5,15 @@ using System.Collections;
 public class SceneBorder : MonoBehaviour {
 
     public string SceneToLoad = "";
+    public BorderPosition borderPosition;
+    public enum BorderPosition
+    {
+        top,
+        right,
+        bottom,
+        left,
+        None
+    }
 
     private string PreviousActive = "";
 
@@ -22,7 +31,7 @@ public class SceneBorder : MonoBehaviour {
             if(SceneToLoad != "" && !Main.Instance.SceneMgr.IsSceneLoaded(SceneToLoad))
             {
                 PreviousActive = SceneMgr.ActiveScene;
-                SceneMgr.LoadAdditiveScene(SceneToLoad);
+                SceneMgr.LoadAdditiveScene(SceneToLoad, borderPosition);
                 CheckUnload();
             }
         }
