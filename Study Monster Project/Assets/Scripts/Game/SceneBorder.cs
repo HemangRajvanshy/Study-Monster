@@ -26,7 +26,7 @@ public class SceneBorder : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.tag == "Player")
+        if (col.tag == "Player")
         {
             if(SceneToLoad != "" && !Main.Instance.SceneMgr.IsSceneLoaded(SceneToLoad))
             {
@@ -37,11 +37,47 @@ public class SceneBorder : MonoBehaviour {
         }
     }
 
+    public void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.tag == "Player")
+        {
+            if(TowardsScene(col.transform))
+            {
+                UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName(GetComponentInParent<SceneParam>().SceneName));
+            }
+        }
+    }
+
+    private bool TowardsScene(Transform Player)
+    {
+        switch(borderPosition)
+        {
+            case BorderPosition.top:
+                if (Player.position.y < transform.position.y)
+                    return true;
+                break;
+            case BorderPosition.bottom:
+                if (Player.position.y > transform.position.y)
+                    return true;
+                break;
+            case BorderPosition.left:
+                if (Player.position.x > transform.position.x)
+                    return true;
+                break;
+            case BorderPosition.right:
+                if (Player.position.x < transform.position.x)
+                    return true;
+                break;
+        }
+        return false;
+    }
+
+  
     private void CheckUnload()
     {
-        foreach(string Scene in SceneMgr.LoadedAdditives)
+        foreach (string Scene in SceneMgr.LoadedAdditives)
         {
-            if(Scene != PreviousActive && Scene != "Game" && Scene != SceneToLoad)
+            if (Scene != PreviousActive && Scene != "Game" && Scene != SceneToLoad)
             {
                 SceneMgr.UnloadAdditiveScene(Scene);
             }

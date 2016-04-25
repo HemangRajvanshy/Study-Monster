@@ -77,7 +77,7 @@
     <Compile Include="Assets\Scripts\Common\Player.cs" />
     <Compile Include="Assets\Scripts\Common\SceneLoadManager.cs" />
     <Compile Include="Assets\Scripts\Common\SfxManager.cs" />
-    <Compile Include="Assets\Scripts\Debug\Debug.cs" />
+    <Compile Include="Assets\Scripts\Debug\Debuger.cs" />
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\BattleManager.cs" />
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\EnemyCombatant.cs" />
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\PlayerCombatant.cs" />

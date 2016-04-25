@@ -77,8 +77,20 @@ public class SceneLoadManager : MonoBehaviour {
 
     public void UnloadAdditiveScene(string sceneName)
     {
-        SceneManager.UnloadScene(sceneName);
-        LoadedAdditives.Remove(sceneName);
+        StartCoroutine(WaitToUnload(sceneName));
+    }
+
+    IEnumerator WaitToUnload(string SceneName)
+    {
+        yield return new WaitForSeconds(0.1f);
+        while (!SceneManager.GetSceneByName(SceneName).isLoaded)
+        {
+            Debug.Log("Not Loaded");
+            yield return new WaitForEndOfFrame();
+        }
+        SceneManager.UnloadScene(SceneName);
+        LoadedAdditives.Remove(SceneName);
+        Resources.UnloadUnusedAssets();
     }
 
     public bool IsSceneLoaded(string SceneName)
