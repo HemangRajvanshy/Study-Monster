@@ -47,6 +47,11 @@ public class NPCController : CharacterController, IInteractable {
         return Dialogue;
     }
 
+    public void FoughtWith()
+    {
+        Combatant = false;
+    }
+
     private void StartMovement()
     {
 

@@ -12,6 +12,7 @@ public class PlayerController : CharacterController {
     private GameObject InteractingNPC;
 
     private bool Talking = false;
+    private bool Fighting = false;
 
     new void Awake()
     {
@@ -63,26 +64,44 @@ public class PlayerController : CharacterController {
     {
         if (!GameManager.Instance.Pause.Paused)
         {
-            if (Input.GetKeyDown(KeyCode.Z)) // KEY CODE TO BE CHANGED
+            if (Input.GetKeyDown(KeyCode.Z) && !Fighting) // KEY CODE TO BE CHANGED
                 HandleInteraction();
 
-            if (!Talking)
+            if (!Talking && !Fighting)
                 HandleMovement();
         }   
     }
 
-    public void Talk(IInteractable Interact)
+    public void StopFigting()
     {
-        Talking = GameManager.Instance.Dialogue.Say(InteractingWith.Interact());
+        Fighting = false;
+    }
+
+    public void Talk(IInteractable Interactable)
+    {
+        Talking = GameManager.Instance.Dialogue.Say(Interactable.Interact());
         if(!Talking && InteractingNPC != null)
         {
             if(InteractingNPC.GetComponent<NPCController>().Combatant) // Check whether NPC is combatant. Also somehow check if we have already fought before or not.
             {
                 //Start Fighting!
+                Fighting = true;
                 GameManager.Instance.BattleManager.InitializeCombat(InteractingNPC.GetComponent<EnemyCombatant>());
             }
         }
     }
+
+    //public void TalkAfterFight(EnemyCombatant enemy, bool win)
+    //{
+    //    if(win)
+    //    {
+    //        Talking = GameManager.Instance.Dialogue.Say(enemy.AfterLooseDialogue);
+    //    }
+    //    else
+    //    {
+    //        Talking = GameManager.Instance.Dialogue.Say(enemy.AfterWinDialogue);
+    //    }
+    //}
 
     private void HandleInteraction()
     {

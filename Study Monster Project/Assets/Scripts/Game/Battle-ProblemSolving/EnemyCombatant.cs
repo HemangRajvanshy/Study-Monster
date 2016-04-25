@@ -7,6 +7,8 @@ using System.Collections;
 public class EnemyCombatant : StudyCombatant {
 
     public Problem problem;
+    public List<string> AfterWinDialogue = new List<string>();
+    public List<string> AfterLooseDialogue = new List<string>();
     public int DamageUpperLim = 20;
     public int DamageLowerLim = 10;
 
@@ -16,6 +18,17 @@ public class EnemyCombatant : StudyCombatant {
         return Damage;
     }
 
+    public void Lost()
+    {
+        GetComponent<NPCController>().Dialogue = AfterLooseDialogue;
+        GetComponent<NPCController>().FoughtWith();
+    }
+
+    public void Won()
+    {
+        GetComponent<NPCController>().Dialogue = AfterWinDialogue;
+        GetComponent<NPCController>().FoughtWith();
+    }
 }
 
 [Serializable]
