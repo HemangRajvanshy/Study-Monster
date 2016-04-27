@@ -52,8 +52,8 @@ public class BattleManager : MonoBehaviour {
         Player.GetComponent<PlayerController>().StopFigting();
         if (win)
             EnemyCombatant.Lost();
-        else
-            EnemyCombatant.Won();
+        //else
+        //    EnemyCombatant.Won();
         Player.GetComponent<PlayerController>().Talk(EnemyCombatant.GetComponent<IInteractable>());
         BattleCanvas.enabled = false;
     }

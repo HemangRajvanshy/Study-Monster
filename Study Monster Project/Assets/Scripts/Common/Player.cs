@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
     {
         GameData.ProgressIndex = 0;
         GameData.SceneLocation = "01-Start";
+        GameData.NPCFought = new List<int>();
 
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour {
     {
         GameData.ProgressIndex = ProgressIndex;
         GameData.SceneLocation = Main.Instance.SceneMgr.ActiveScene;
+        //NPCFought List gets updated throughout automatically.
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/game" + ActiveSaveNumber.ToString() + ".dat");
@@ -62,7 +64,12 @@ public class Player : MonoBehaviour {
         file.Close();
     }
 
-    public void LoadGame(int saveNumber)
+    public void NPCFought(int num)
+    {
+        GameData.NPCFought.Add(num);
+    }
+
+    public void LoadGame(int saveNumber) // Everything reads out of GameData as and when needed.
     {
         ActiveSaveNumber = saveNumber;
 
@@ -171,4 +178,6 @@ public class GameSave
 {
     public int ProgressIndex;
     public string SceneLocation;
+
+    public List<int> NPCFought;
 }

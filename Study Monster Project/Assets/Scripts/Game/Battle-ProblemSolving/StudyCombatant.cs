@@ -8,7 +8,7 @@ public class StudyCombatant : MonoBehaviour {
 
     private int Health;
 
-    void Start()
+    protected void Start()
     {
         Health = TotalHealth;
     }
@@ -25,6 +25,6 @@ public class StudyCombatant : MonoBehaviour {
 
     public int GetHealth()
     {
-        return Health;
+        return Health; 
     }
 }

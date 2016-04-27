@@ -4,13 +4,35 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
+[RequireComponent(typeof(NPCController))]
 public class EnemyCombatant : StudyCombatant {
 
     public Problem problem;
-    public List<string> AfterWinDialogue = new List<string>();
     public List<string> AfterLooseDialogue = new List<string>();
     public int DamageUpperLim = 20;
     public int DamageLowerLim = 10;
+    public int CombatantNumber;
+
+    private NPCController Npc;
+
+    new void Start()
+    {
+        base.Start();
+        Npc = GetComponent<NPCController>();
+        if(Npc.Combatant)
+        {
+            CheckIfFought();
+        }
+    }
+
+    private void CheckIfFought()
+    {
+        if(Main.Instance.player.GameData.NPCFought.Contains(CombatantNumber))
+        {
+            Lost();
+        }
+        //else we have not fought
+    }
 
     public int GetDamage()
     {
@@ -20,15 +42,16 @@ public class EnemyCombatant : StudyCombatant {
 
     public void Lost()
     {
-        GetComponent<NPCController>().Dialogue = AfterLooseDialogue;
-        GetComponent<NPCController>().FoughtWith();
+        Npc.Dialogue = AfterLooseDialogue;
+        Npc.FoughtWith();
+        Main.Instance.player.NPCFought(CombatantNumber);
     }
 
-    public void Won()
-    {
-        GetComponent<NPCController>().Dialogue = AfterWinDialogue;
-        GetComponent<NPCController>().FoughtWith();
-    }
+    //public void Won()
+    //{
+    //    Npc.Dialogue = AfterWinDialogue;
+    //    Npc.FoughtWith();
+    //}
 }
 
 [Serializable]
