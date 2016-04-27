@@ -73,7 +73,7 @@ public class CharacterController : MonoBehaviour
     {
         if (!moving)
         {
-            moving = true;
+            moving = true; 
             transform.position += new Vector3(deltaPosition.x, deltaPosition.y);
             StartCoroutine(WaitTillNextMove(1/TilesPerSec));
         }

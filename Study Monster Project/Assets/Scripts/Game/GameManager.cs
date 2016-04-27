@@ -44,8 +44,9 @@ public class GameManager : MonoBehaviour {
     #region Public Methods
 
     public void OnBack()
-    {
-        Pause.Pause_Resume();
+    {   
+        if(state != GameState.Story)
+            Pause.Pause_Resume();
     }
 
     public void StoryComplete()

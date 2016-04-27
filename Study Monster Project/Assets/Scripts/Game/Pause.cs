@@ -12,7 +12,8 @@ public class Pause : MonoBehaviour {
 	void Start ()
     {
         PausePanel.SetActive(false);
-        paused = false;
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
 	}
 
     public void Pause_Resume()
@@ -29,6 +30,12 @@ public class Pause : MonoBehaviour {
             Time.timeScale = 1f;
             PausePanel.SetActive(false);
         }
+    }
+
+    public void Save()
+    {
+        Main.Instance.player.SaveGame();
+        Debug.Log("Game Saved.");
     }
 
     public void Menu()
