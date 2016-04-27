@@ -17,17 +17,17 @@ public class Pause : MonoBehaviour {
 
     public void Pause_Resume()
     {
-        if (paused)
+        if (!paused)
         {
-            paused = false;
+            paused = true;
             Time.timeScale = 0f;
-            PausePanel.SetActive(false);
+            PausePanel.SetActive(true);
         }
         else
         {
-            paused = true;
+            paused = false;
             Time.timeScale = 1f;
-            PausePanel.SetActive(true);
+            PausePanel.SetActive(false);
         }
     }
 
