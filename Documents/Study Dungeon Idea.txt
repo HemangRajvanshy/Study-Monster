@@ -1,20 +1,19 @@
 OVERVIEW:
 
 One popular story goes with the protagonist getting sucked into kinds of virtual worlds, often times computer video games.
-This one gets sucked into a math(or physics, not sure yet) textbook.
-He has to make his way through chapters(analogous to cities) in a pokemon style game.
-He has his own life alright(analogous to mental strength remaining), beds throughout the game to heal.
-(possible feature: can buy chocolates(Or other motivaitng objects) in-game to heal in battle. Can use marks or something.)
-He fights various problems in each chapter(maybe in a gym like building called Excersise Dungeon or something) and learns in some other specific buildings. 
+This one gets sucked into a math textbook.
+The protagonist has to make his way through chapters(analogous to cities) in a pokemon style game.
+He has his own life alright(analogous to mental strength remaining),with beds throughout the game to recover.
+(possible feature: can buy chocolates(Or other motivaitng objects) to heal during battle.)
+The protagonist fights various problems/problem masters in each chapter(city) and does the learning in some other specific buildings. 
 
 
 
 
+STORY: (Story telling will be Visual Novel Style)
 
-STORY:
 
-
-Protag's father is popular scientist, protag is though, not very good at studies.
+Protag's father is a popular scientist, protag is though, not very good at studies.
 The game starts with mid-term exams being declared. Protag is disappointed, just passes, bottom of class,
 people back talk about protag being stupid despite being son of popular scientist.
 Protag trash talks himself as well.
@@ -24,11 +23,11 @@ Protag thinks the heck hes already got a whole lot of books he can't understand 
 Next morning, protag is in a little better mood and is a little curious. Opens book mentioned by father and reads heading on first page. Gets sucked into the book.
 Darkness...
 "....What happened?..."
-[Noticeable Drastic graphic change here: Graphics till now were VN style, beautifully drawn, drawn frame by frame story telling. This changes into 16 bit-ish pokemons style pixel art.]
+[Noticeable Drastic graphic change here: Graphics till now were VN style. This changes into 16 bit-ish retro style pixel art.]
 Protag talks to wise old man who says something along the lines:
 "Welcome brave student, you have chosen or have been chosen to make you way through the trials of [book name(highschool algebra)]. 
 You might want to know how you are supposed to get back to your world, and I assure you I am sorry to tell you that the only way to do that
-is to reach the end of the trials of [] and get the exit pass. Before you ask, I will tell you that time in this world is 1000 times slower than in the other world, so you don't have to worry about that. There'd come many that'd help you as well as obstruct you in your journey brave student. I wish you luck."
+is to reach the end of the trials of [] and get the exit pass. Before you ask, I will tell you that time in this world is a 1000 times slower than in the other world, so you don't have to worry about that. There'd come many that'd help you as well as obstruct you in your journey brave student. I wish you luck."
 
 
 3 types of NPC will exist throughout the game:
@@ -68,7 +67,7 @@ The protag will have to solve the problem and go to right spot to do something. 
 
 
 
-CHALLENGES:
+Design Questions:
 
-1) What should problem monsters look like? Should they be the problem themselves or a person? An Examiner or something else?
+1) What should problems look like? Should they be the problem themselves or a person? An Examiner or something else? Popular mathematicians maybe?
 

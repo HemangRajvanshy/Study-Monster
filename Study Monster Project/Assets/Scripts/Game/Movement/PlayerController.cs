@@ -64,11 +64,7 @@ public class PlayerController : CharacterController {
     {
         if (!GameManager.Instance.Pause.Paused)
         {
-            if (Input.GetKeyDown(KeyCode.Z) && !Fighting) // KEY CODE TO BE CHANGED
-                HandleInteraction();
-
-            if (!Talking && !Fighting)
-                HandleMovement();
+            HandleMovement();
         }   
     }
 
@@ -103,55 +99,61 @@ public class PlayerController : CharacterController {
     //    }
     //}
 
-    private void HandleInteraction()
+    public void HandleInteraction()
     {
-        if(InteractingWith != null)
+        if (!Fighting && !GameManager.Instance.Pause.Paused)
         {
-            Talk(InteractingWith);
+            if (InteractingWith != null)
+            {
+                Talk(InteractingWith);
+            } 
         }
     }
 
     private void HandleMovement()
     {
-        if (Input.GetKey(KeyCode.RightArrow) && CheckRight())
+        if (!Talking && !Fighting)
         {
-            move(Vector2.right, TilesPerSecond);
+            if (Input.GetKey(KeyCode.RightArrow) && CheckRight())
+            {
+                move(Vector2.right, TilesPerSecond);
 
-            if (PlayerSprite.transform.localScale.x < 0f)
-                PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
+                if (PlayerSprite.transform.localScale.x < 0f)
+                    PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
 
-            if (_animator)
-                _animator.Play(Animator.StringToHash("Run"));
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow) && CheckLeft())
-        {
-            move(Vector2.left, TilesPerSecond);
+                if (_animator)
+                    _animator.Play(Animator.StringToHash("Run"));
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow) && CheckLeft())
+            {
+                move(Vector2.left, TilesPerSecond);
 
-            if (PlayerSprite.transform.localScale.x > 0f)
-                PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
+                if (PlayerSprite.transform.localScale.x > 0f)
+                    PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
 
-            if (_animator)
-                _animator.Play(Animator.StringToHash("Run"));
-        }
-        else if (Input.GetKey(KeyCode.UpArrow) && CheckUp())
-        {
-            move(Vector2.up, TilesPerSecond);
+                if (_animator)
+                    _animator.Play(Animator.StringToHash("Run"));
+            }
+            else if (Input.GetKey(KeyCode.UpArrow) && CheckUp())
+            {
+                move(Vector2.up, TilesPerSecond);
 
-            if (_animator)
-                _animator.Play(Animator.StringToHash("RunUP"));
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) && CheckDown())
-        {
-            move(Vector2.down, TilesPerSecond);
+                if (_animator)
+                    _animator.Play(Animator.StringToHash("RunUP"));
+            }
+            else if (Input.GetKey(KeyCode.DownArrow) && CheckDown())
+            {
+                move(Vector2.down, TilesPerSecond);
 
-            if (_animator)
-                _animator.Play(Animator.StringToHash("RunDown"));
-        }
-        else
-        {
-            //Don't move               
-            if (_animator)
-                _animator.Play(Animator.StringToHash("Idle"));
+                if (_animator)
+                    _animator.Play(Animator.StringToHash("RunDown"));
+            }
+            else
+            {
+                //Don't move               
+                if (_animator)
+                    _animator.Play(Animator.StringToHash("Idle"));
+            } 
         }
     }
 

@@ -23,5 +23,13 @@ public class InputManager : MonoBehaviour {
             if (raycastResults.Count > 0)
                 Main.Instance.OnClick(raycastResults[0]);
         }
+
+        if (Input.GetKeyDown(KeyCode.Z)) // KEY CODE TO BE CHANGED
+        {
+            if(Main.Instance.SceneMgr.IsSceneLoaded("Game"))
+            {
+                GameManager.Instance.Player.HandleInteraction();
+            }
+        }
     }
 }
