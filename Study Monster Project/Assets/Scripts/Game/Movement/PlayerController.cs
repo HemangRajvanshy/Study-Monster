@@ -86,7 +86,7 @@ public class PlayerController : CharacterController {
             {
                 //Start Fighting!
                 Fighting = true;
-                GameManager.Instance.BattleManager.InitializeCombat(InteractingNPC.GetComponent<EnemyCombatant>());
+                GameManager.Instance.StartCombat(InteractingNPC.GetComponent<EnemyCombatant>());
             }
         }
     }

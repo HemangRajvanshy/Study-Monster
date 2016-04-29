@@ -49,10 +49,10 @@ public class BattleManager : MonoBehaviour {
 
     public void EndCombat(bool win)
     {
-        Player.GetComponent<PlayerController>().StopFigting();
+        GameManager.Instance.EndCombat();
         if (win)
             EnemyCombatant.Lost();
-        //else
+        //else //Enemies don't do anything when they win, the game just loads from last save point.
         //    EnemyCombatant.Won();
         Player.GetComponent<PlayerController>().Talk(EnemyCombatant.GetComponent<IInteractable>());
         BattleCanvas.enabled = false;

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public DialogueSystem Dialogue;
     public StoryManager StoryManager;
     public BattleManager BattleManager;
+    public PlayerController Player;
 
     private int ProgressIndex;
     private GameState state;
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour {
     {
         Story,
         Game,
-        Talking
+        Battle
     };
 
     #region UnityMethods
@@ -45,8 +46,20 @@ public class GameManager : MonoBehaviour {
 
     public void OnBack()
     {   
-        if(state != GameState.Story)
+        if(state != GameState.Story && state != GameState.Battle)
             Pause.Pause_Resume();
+    }
+
+    public void StartCombat(EnemyCombatant Enemy)
+    {
+        state = GameState.Battle;
+        BattleManager.InitializeCombat(Enemy);
+    }
+
+    public void EndCombat()
+    {
+        state = GameState.Game;
+        Player.StopFigting();   
     }
 
     public void StoryComplete()
