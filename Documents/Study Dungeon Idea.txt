@@ -67,9 +67,14 @@ This would be reinforced in practice (analogous to solving example problem) batt
 
 
 Gameplay idea:
-For some graph related math problems (like finding the x or y intercept) we can have say, a special ground with holes representing integer coordinates and 2 axes painted on the ground. 
+1) For some graph related math problems (like finding the x or y intercept) we can have say, a special ground with holes representing integer coordinates and 2 axes painted on the ground. 
 The protag will have to solve the problem and go to right spot to do something. (Like stab a pole down that hole or something) if he's wrong he gets a shock out of that hole or something. This he does to open doors from one room to the other.
 
+2) For vectors: Kick some object into a hole. You will have to calculate the vector, amount of force and direction(angle) to get the object into some hole. This would be done in order to open some doors
+
+3) Co-ordinate geometry/vectors: enter the co-ordinates of some objects to shoot them, maybe sensors with a laser to open the doors, multiple objects in some time limit.
+
+4) Trig/Vectors: Number 3, but with reflecting surface, so do some math to be able to hit the sensor at the right(no not 90 degree right) angle. 
 
 
 Design Questions:
