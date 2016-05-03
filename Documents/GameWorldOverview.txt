@@ -1,0 +1,15 @@
+Three Cities/Towns through the game.
+
+First sunny village: Basic math, ensure that the player is good enough for future challenges. If not make train him here. (co-ordinate geom, quadratics a little trig and graphs of functions)
+Has to defeat first exercise(Batch of type 3 npcs) to go through.
+
+Second Town could be Conic sections.
+
+Third Town likewise could be vectors and a little more trig.
+
+At the end of the three towns, without type one npcs, just after Third town exercise would be the final excersise with a mix of questions from throughout the textbook. Beating it would get player out of book.
+
+
+
+Throughout game, at every stage, protag would collect pages of textbook. By the end of the game, he would have to complete book with each problem that he has solved. (If with npc 1 as example, otherwise as excersise question)
+If the player accesses a save that has completed the game, he can look at the complete textbook.

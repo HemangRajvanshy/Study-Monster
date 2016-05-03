@@ -97,7 +97,6 @@ public class CharacterController : MonoBehaviour
             time += Time.deltaTime;
             float distCompleted = time / waitTime;
             transform.position = Vector3.Lerp(transform.position, To, distCompleted);
-            Debug.Log(Vector3.Lerp(transform.position, deltapos, distCompleted)+ " deltapos "  + deltapos);
             yield return new WaitForEndOfFrame();
         }
     }
