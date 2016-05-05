@@ -109,7 +109,7 @@ public class CharacterController : MonoBehaviour
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
                     return false;
             }
         }
@@ -124,7 +124,7 @@ public class CharacterController : MonoBehaviour
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
                     return false;
             }
         }
@@ -139,7 +139,7 @@ public class CharacterController : MonoBehaviour
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
                     return false;
             }
         }
@@ -154,7 +154,7 @@ public class CharacterController : MonoBehaviour
         {
             if (hit.transform.GetComponent<SpriteRenderer>() != null)
             {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != "Player")
+                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
                     return false;
             }
         }
