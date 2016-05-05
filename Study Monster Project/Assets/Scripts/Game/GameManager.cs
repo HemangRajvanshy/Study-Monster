@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public StoryManager StoryManager;
     public BattleManager BattleManager;
     public PlayerController Player;
+    public InGameItems Items;
 
     private int ProgressIndex;
     private GameState state;

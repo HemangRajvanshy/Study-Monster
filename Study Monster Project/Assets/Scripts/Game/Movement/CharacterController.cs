@@ -73,8 +73,9 @@ public class CharacterController : MonoBehaviour
     {
         if (!moving)
         {
-            moving = true; 
-            transform.position += new Vector3(deltaPosition.x, deltaPosition.y);
+            moving = true;
+            //transform.position += new Vector3(deltaPosition.x, deltaPosition.y);
+            StartCoroutine(Tween(deltaPosition, 1/TilesPerSec));
             StartCoroutine(WaitTillNextMove(1/TilesPerSec));
         }
     }
@@ -85,6 +86,19 @@ public class CharacterController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         moving = false;
+    }
+
+    IEnumerator Tween(Vector2 deltapos, float waitTime)
+    {
+        float time = 0;
+        Vector2 To = transform.position + new Vector3(deltapos.x, deltapos.y);
+        while (moving)
+        {
+            time += Time.deltaTime;
+            float distCompleted = time / waitTime;
+            transform.position = Vector3.Lerp(transform.position, To, distCompleted);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     protected bool CheckUp()

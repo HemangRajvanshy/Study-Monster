@@ -91,10 +91,12 @@
     <Compile Include="Assets\Scripts\Game\Movement\NPCController.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Game\Pause.cs" />
-    <Compile Include="Assets\Scripts\Game\SceneBorder.cs" />
-    <Compile Include="Assets\Scripts\Game\SceneParam.cs" />
-    <Compile Include="Assets\Scripts\Game\Story.cs" />
-    <Compile Include="Assets\Scripts\Game\StoryManager.cs" />
+    <Compile Include="Assets\Scripts\Game\PlayerInventory.cs" />
+    <Compile Include="Assets\Scripts\Game\SceneAndStory\InGameItems.cs" />
+    <Compile Include="Assets\Scripts\Game\SceneAndStory\SceneBorder.cs" />
+    <Compile Include="Assets\Scripts\Game\SceneAndStory\SceneParam.cs" />
+    <Compile Include="Assets\Scripts\Game\SceneAndStory\Story.cs" />
+    <Compile Include="Assets\Scripts\Game\SceneAndStory\StoryManager.cs" />
     <Compile Include="Assets\Scripts\Game\TextType.cs" />
     <Compile Include="Assets\Scripts\Game\WorldObject.cs" />
     <Compile Include="Assets\Scripts\Menu\Menu_UI.cs" />
