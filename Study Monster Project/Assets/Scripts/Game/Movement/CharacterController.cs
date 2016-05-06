@@ -34,6 +34,7 @@ public class CharacterController : MonoBehaviour
     public CharacterCollisionState2D collisionState = new CharacterCollisionState2D();
 
     private bool moving;
+    private string SortingLayer;
 
     #region MonoBehaviour
 
@@ -91,12 +92,12 @@ public class CharacterController : MonoBehaviour
     IEnumerator Tween(Vector2 deltapos, float waitTime)
     {
         float time = 0;
-        Vector2 To = transform.position + new Vector3(deltapos.x, deltapos.y);
+        Vector2 To = transform.localPosition + new Vector3(deltapos.x, deltapos.y);
         while (moving)
         {
             time += Time.deltaTime;
             float distCompleted = time / waitTime;
-            transform.position = Vector3.Lerp(transform.position, To, distCompleted);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, To, distCompleted);
             yield return new WaitForEndOfFrame();
         }
     }
@@ -104,14 +105,10 @@ public class CharacterController : MonoBehaviour
     protected bool CheckUp()
     {
 
-        var hit = Physics2D.Raycast(transform.position, Vector2.up, 1f, 1 << 0);
+        var hit = Physics2D.Raycast(transform.position, Vector2.up, 1f, ~(1 << this.gameObject.layer));
         if (hit)
         {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
-                    return false;
-            }
+            return CheckHit(hit);
         }
 
         return true;
@@ -119,29 +116,21 @@ public class CharacterController : MonoBehaviour
 
     protected bool CheckDown()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, 1 << 0);
+        var hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, ~(1 << this.gameObject.layer));
         if (hit)
         {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
-                    return false;
-            }
+            return CheckHit(hit);
         }
         return true;
     }
 
     protected bool CheckRight()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.right, 1f, 1 << 0);
+        var hit = Physics2D.Raycast(transform.position, Vector2.right, 1f, ~(1 << this.gameObject.layer));
 
         if (hit)
         {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
-                    return false;
-            }
+            return CheckHit(hit);
         }
 
         return true;
@@ -149,14 +138,30 @@ public class CharacterController : MonoBehaviour
 
     protected bool CheckLeft()
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, 1 << 0);
+        var hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, ~(1 << this.gameObject.layer));
         if (hit)
         {
-            if (hit.transform.GetComponent<SpriteRenderer>() != null)
-            {
-                if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != this.GetComponent<SpriteRenderer>().sortingLayerName)
-                    return false;
-            }
+            return CheckHit(hit);
+        }
+        return true;
+    }
+
+    private bool CheckHit(RaycastHit2D hit)
+    {
+        if (this.GetComponent<SpriteRenderer>() != null)
+            SortingLayer = this.GetComponent<SpriteRenderer>().sortingLayerName;
+        if (this.GetComponentInChildren<SpriteRenderer>() != null)
+            SortingLayer = this.GetComponentInChildren<SpriteRenderer>().sortingLayerName;
+
+        if (hit.transform.GetComponent<SpriteRenderer>() != null)
+        {
+            if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != SortingLayer)
+                return false;
+        }
+        if (hit.transform.GetComponentInChildren<SpriteRenderer>() != null)
+        {
+            if (hit.transform.GetComponentInChildren<SpriteRenderer>().sortingLayerName != SortingLayer)
+                return false;
         }
         return true;
     }

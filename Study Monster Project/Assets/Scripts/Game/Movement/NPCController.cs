@@ -108,7 +108,8 @@ public class NPCController : CharacterController, IInteractable {
             }
             else if(!Talking)
             {
-                PerformMove(SequentialMovement());
+                if(PerformMove(SequentialMovement())) // Check if the move was actually performed.
+                    MovementIndex++; // Move was performed, can perform next move now.
                 yield return new WaitForSeconds(DelayBetweenMovements);
             }
             yield return new WaitForEndOfFrame();
@@ -136,14 +137,13 @@ public class NPCController : CharacterController, IInteractable {
                 MovementIndex = 0;
             }            
             var Res = MovementSet[MovementIndex];
-            MovementIndex++;
             return Res;
         }
         else
             return BasicMovements.Idle;
     }
 
-    private void PerformMove(BasicMovements Movement)
+    private bool PerformMove(BasicMovements Movement)
     {
         switch (Movement)
         {
@@ -157,6 +157,7 @@ public class NPCController : CharacterController, IInteractable {
 
                     if (_animator)
                         _animator.Play(Animator.StringToHash("Run"));
+                    return true;
                 }
                 break;
             case BasicMovements.Left:
@@ -168,6 +169,7 @@ public class NPCController : CharacterController, IInteractable {
 
                     if (_animator)
                         _animator.Play(Animator.StringToHash("Run"));
+                    return true;
                 }
                 break;
             case BasicMovements.Up:
@@ -177,6 +179,7 @@ public class NPCController : CharacterController, IInteractable {
 
                     if (_animator)
                         _animator.Play(Animator.StringToHash("RunUP"));
+                    return true;
                 }
                 break;
             case BasicMovements.Down:
@@ -186,15 +189,17 @@ public class NPCController : CharacterController, IInteractable {
 
                     if (_animator)
                         _animator.Play(Animator.StringToHash("RunDown"));
+                    return true;
                 }
                 break;
             case BasicMovements.Idle:
                 //Don't move               
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Idle"));
+                return true;
                 break;
         }
-
+        return false;
     }
     
 }
