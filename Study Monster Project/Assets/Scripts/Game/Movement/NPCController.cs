@@ -40,6 +40,7 @@ public class NPCController : CharacterController, IInteractable {
         _animator = GetComponent<Animator>();
         onTriggerEnterEvent += TriggerEnter;
 
+        InitPos = transform.position;
         if(MovementSet.Count > 0)
         { StartCoroutine(Movement());  } 
     }
@@ -120,12 +121,35 @@ public class NPCController : CharacterController, IInteractable {
     {
         if (!GameManager.Instance.Pause.Paused)
         {
+            bool canDo = false;
+            BasicMovements mov = BasicMovements.Idle;
 
+            mov = MovementSet[Random.Range(0, MovementSet.Count)];
+            canDo = Mathf.Abs(transform.position.x - InitPos.x) < MoveFreedom && Mathf.Abs(transform.position.y - InitPos.y) < MoveFreedom;
+            if(!canDo)
+            {
+                if(transform.position.x > InitPos.x)
+                {
+                    return BasicMovements.Left;
+                }
+                else if(transform.position.x < InitPos.x)
+                {
+                    return BasicMovements.Right;
+                }
+                else if(transform.position.y > InitPos.y)
+                {
+                    return BasicMovements.Down;
+                }
+                else
+                {
+                    return BasicMovements.Up;
+                }
+            }
+
+            return mov;
         }
         else
             return BasicMovements.Idle;
-
-        return BasicMovements.Idle;
     }
 
     private BasicMovements SequentialMovement()
