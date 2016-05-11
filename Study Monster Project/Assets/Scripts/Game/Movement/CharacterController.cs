@@ -25,9 +25,6 @@ public class CharacterController : MonoBehaviour
     [HideInInspector]
     [NonSerialized]
     public new Transform transform;
-    [HideInInspector]
-    [NonSerialized]
-    public BoxCollider2D boxCollider;
 
     [HideInInspector]
     [NonSerialized]
@@ -43,7 +40,6 @@ public class CharacterController : MonoBehaviour
         moving = false;
 
         transform = GetComponent<Transform>();
-        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     public void OnTriggerEnter2D(Collider2D col)
