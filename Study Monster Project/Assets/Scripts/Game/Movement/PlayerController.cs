@@ -120,7 +120,7 @@ public class PlayerController : CharacterController {
         {
             if (Input.GetKey(KeyCode.RightArrow) && CheckRight())
             {
-                move(Vector2.right, TilesPerSecond);
+                move(Vector2.right, TilesPerSecond, CheckRight);
 
                 if (PlayerSprite.transform.localScale.x < 0f)
                     PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
@@ -130,7 +130,7 @@ public class PlayerController : CharacterController {
             }
             else if (Input.GetKey(KeyCode.LeftArrow) && CheckLeft())
             {
-                move(Vector2.left, TilesPerSecond);
+                move(Vector2.left, TilesPerSecond, CheckLeft);
 
                 if (PlayerSprite.transform.localScale.x > 0f)
                     PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
@@ -140,14 +140,14 @@ public class PlayerController : CharacterController {
             }
             else if (Input.GetKey(KeyCode.UpArrow) && CheckUp())
             {
-                move(Vector2.up, TilesPerSecond);
+                move(Vector2.up, TilesPerSecond, CheckUp);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("RunUP"));
             }
             else if (Input.GetKey(KeyCode.DownArrow) && CheckDown())
             {
-                move(Vector2.down, TilesPerSecond);
+                move(Vector2.down, TilesPerSecond, CheckDown);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("RunDown"));
@@ -160,7 +160,5 @@ public class PlayerController : CharacterController {
             } 
         }
     }
-
-
 
 }

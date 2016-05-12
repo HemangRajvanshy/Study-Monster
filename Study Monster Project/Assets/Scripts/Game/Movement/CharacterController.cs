@@ -66,13 +66,13 @@ public class CharacterController : MonoBehaviour
 
     #region Public
 
-    public void move(Vector2 deltaPosition, float TilesPerSec = 1f)
+    public void move(Vector2 deltaPosition, float TilesPerSec, Func<bool> check)
     {
         if (!moving)
         {
             moving = true;
             //transform.position += new Vector3(deltaPosition.x, deltaPosition.y);
-            StartCoroutine(Tween(deltaPosition, 1/TilesPerSec));
+            StartCoroutine(Tween(deltaPosition, 1/TilesPerSec, check));
             StartCoroutine(WaitTillNextMove(1/TilesPerSec));
         }
     }
@@ -85,9 +85,10 @@ public class CharacterController : MonoBehaviour
         moving = false;
     }
 
-    IEnumerator Tween(Vector2 deltapos, float waitTime)
+    protected virtual IEnumerator Tween(Vector2 deltapos, float waitTime, Func<bool> check)
     {
         float time = 0;
+        Vector2 from = transform.localPosition;
         Vector2 To = transform.localPosition + new Vector3(deltapos.x, deltapos.y);
         while (moving)
         {
@@ -100,13 +101,12 @@ public class CharacterController : MonoBehaviour
 
     protected bool CheckUp()
     {
-
         var hit = Physics2D.Raycast(transform.position, Vector2.up, 1f, ~(1 << this.gameObject.layer));
-        if (hit)
-        {
-            return CheckHit(hit);
-        }
 
+        if (hit)
+        { 
+            return CheckHit(hit);
+        }       
         return true;
     }
 
