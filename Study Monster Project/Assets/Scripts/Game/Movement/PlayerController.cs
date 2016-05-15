@@ -118,9 +118,9 @@ public class PlayerController : CharacterController {
     {
         if (!Talking && !Fighting)
         {
-            if (Input.GetKey(KeyCode.RightArrow) && CheckRight())
+            if (Input.GetKey(KeyCode.RightArrow) && Raycast(Vector2.right, 1f))
             {
-                move(Vector2.right, TilesPerSecond, CheckRight);
+                move(Vector2.right, TilesPerSecond);
 
                 if (PlayerSprite.transform.localScale.x < 0f)
                     PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
@@ -128,9 +128,9 @@ public class PlayerController : CharacterController {
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));
             }
-            else if (Input.GetKey(KeyCode.LeftArrow) && CheckLeft())
+            else if (Input.GetKey(KeyCode.LeftArrow) && Raycast(Vector2.left, 1f))
             {
-                move(Vector2.left, TilesPerSecond, CheckLeft);
+                move(Vector2.left, TilesPerSecond);
 
                 if (PlayerSprite.transform.localScale.x > 0f)
                     PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
@@ -138,16 +138,16 @@ public class PlayerController : CharacterController {
                 if (_animator)
                     _animator.Play(Animator.StringToHash("Run"));
             }
-            else if (Input.GetKey(KeyCode.UpArrow) && CheckUp())
+            else if (Input.GetKey(KeyCode.UpArrow) && Raycast(Vector2.up, 1f))
             {
-                move(Vector2.up, TilesPerSecond, CheckUp);
+                move(Vector2.up, TilesPerSecond);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("RunUP"));
             }
-            else if (Input.GetKey(KeyCode.DownArrow) && CheckDown())
+            else if (Input.GetKey(KeyCode.DownArrow) && Raycast(Vector2.down, 1f))
             {
-                move(Vector2.down, TilesPerSecond, CheckDown);
+                move(Vector2.down, TilesPerSecond);
 
                 if (_animator)
                     _animator.Play(Animator.StringToHash("RunDown"));

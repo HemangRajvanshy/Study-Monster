@@ -39,3 +39,4 @@ Overview:
 	
 Teaching Material:
 	Tell the student how the graphs of equations can be used to describe to crazy shapes with very specific properties. 
+	

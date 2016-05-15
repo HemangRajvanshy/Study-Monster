@@ -31,6 +31,7 @@ public class CharacterController : MonoBehaviour
     public CharacterCollisionState2D collisionState = new CharacterCollisionState2D();
 
     private bool moving;
+    protected bool success = false;
     private string SortingLayer;
 
     #region MonoBehaviour
@@ -66,13 +67,13 @@ public class CharacterController : MonoBehaviour
 
     #region Public
 
-    public void move(Vector2 deltaPosition, float TilesPerSec, Func<bool> check)
+    public void move(Vector2 deltaPosition, float TilesPerSec)
     {
         if (!moving)
         {
             moving = true;
             //transform.position += new Vector3(deltaPosition.x, deltaPosition.y);
-            StartCoroutine(Tween(deltaPosition, 1/TilesPerSec, check));
+            StartCoroutine(Tween(deltaPosition, 1/TilesPerSec));
             StartCoroutine(WaitTillNextMove(1/TilesPerSec));
         }
     }
@@ -85,7 +86,7 @@ public class CharacterController : MonoBehaviour
         moving = false;
     }
 
-    protected virtual IEnumerator Tween(Vector2 deltapos, float waitTime, Func<bool> check)
+    protected virtual IEnumerator Tween(Vector2 deltapos, float waitTime)
     {
         float time = 0;
         Vector2 from = transform.localPosition;
@@ -94,51 +95,33 @@ public class CharacterController : MonoBehaviour
         {
             time += Time.deltaTime;
             float distCompleted = time / waitTime;
-            transform.localPosition = Vector3.Lerp(transform.localPosition, To, distCompleted);
+            success = CompleteMoveCheck(deltapos, from, distCompleted);
+            if (!success)
+                break;
+            transform.localPosition = Vector2.Lerp(from, To, distCompleted);
             yield return new WaitForEndOfFrame();
         }
     }
 
-    protected bool CheckUp()
+    private bool CompleteMoveCheck(Vector2 To, Vector2 BackTo, float distCompleted)
     {
-        var hit = Physics2D.Raycast(transform.position, Vector2.up, 1f, ~(1 << this.gameObject.layer));
+        if (!Raycast(To, (1f-distCompleted)))
+        {
+            moving = false;
+            transform.localPosition = BackTo;
+            return false;
+        }
+        return true;
+    }
+
+    protected bool Raycast(Vector2 Direction, float Distance)
+    {
+        var hit = Physics2D.Raycast(transform.position, Direction, Distance, ~(1 << this.gameObject.layer));
 
         if (hit)
         { 
             return CheckHit(hit);
         }       
-        return true;
-    }
-
-    protected bool CheckDown()
-    {
-        var hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, ~(1 << this.gameObject.layer));
-        if (hit)
-        {
-            return CheckHit(hit);
-        }
-        return true;
-    }
-
-    protected bool CheckRight()
-    {
-        var hit = Physics2D.Raycast(transform.position, Vector2.right, 1f, ~(1 << this.gameObject.layer));
-
-        if (hit)
-        {
-            return CheckHit(hit);
-        }
-
-        return true;
-    }
-
-    protected bool CheckLeft()
-    {
-        var hit = Physics2D.Raycast(transform.position, Vector2.left, 1f, ~(1 << this.gameObject.layer));
-        if (hit)
-        {
-            return CheckHit(hit);
-        }
         return true;
     }
 

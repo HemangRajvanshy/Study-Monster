@@ -106,22 +106,22 @@ public class NPCController : CharacterController, IInteractable {
             if (RandomMovement && !Talking)
             {
                 PerformMove(RandomMove());
-                yield return new WaitForSeconds(DelayBetweenMovements);
+                yield return new WaitForSeconds(DelayBetweenMovements + 1 / TilesPerSec);
             }
             else if(!Talking)
             {
-                if(PerformMove(SequentialMovement()))// Check if the move was actually performed.
-                    MovementIndex++;// Move was performed, can perform next move now.
-
-                yield return new WaitForSeconds(DelayBetweenMovements);
+                PerformMove(SequentialMovement());
+                yield return new WaitForSeconds(DelayBetweenMovements+1/TilesPerSec);
             }
             yield return new WaitForEndOfFrame();
         }
     }
 
-    protected override IEnumerator Tween(Vector2 deltapos, float waitTime, Func<bool> check)
+    protected override IEnumerator Tween(Vector2 deltapos, float waitTime)
     {
-        yield return base.Tween(deltapos, waitTime, check);
+        yield return base.Tween(deltapos, waitTime);
+        if (success)
+            MovementIndex++; ; // Move was performed, can perform next move now.
     }
 
     private BasicMovements RandomMove()
@@ -179,9 +179,9 @@ public class NPCController : CharacterController, IInteractable {
         switch (Movement)
         {
             case BasicMovements.Right:
-                if (CheckRight())
+                if (Raycast(Vector2.right, 1f))
                 {
-                    move(Vector2.right, 1/TilesPerSec, CheckRight);
+                    move(Vector2.right, TilesPerSec);
 
                     if (transform.localScale.x < 0f)
                         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -192,9 +192,9 @@ public class NPCController : CharacterController, IInteractable {
                 }
                 break;
             case BasicMovements.Left:
-                if (CheckLeft())
+                if (Raycast(Vector2.left, 1f))
                 {
-                    move(Vector2.left, 1 / TilesPerSec, CheckLeft);
+                    move(Vector2.left, TilesPerSec);
                     if (transform.localScale.x > 0f)
                         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
@@ -204,9 +204,9 @@ public class NPCController : CharacterController, IInteractable {
                 }
                 break;
             case BasicMovements.Up:
-                if (CheckUp())
+                if (Raycast(Vector2.up, 1f))
                 {
-                    move(Vector2.up, 1 / TilesPerSec, CheckUp);
+                    move(Vector2.up, TilesPerSec);
 
                     if (_animator)
                         _animator.Play(Animator.StringToHash("RunUP"));
@@ -214,9 +214,9 @@ public class NPCController : CharacterController, IInteractable {
                 }
                 break;
             case BasicMovements.Down:
-                if (CheckDown())
+                if (Raycast(Vector2.down, 1f))
                 {
-                    move(Vector2.down, 1 / TilesPerSec, CheckLeft);
+                    move(Vector2.down, TilesPerSec);
                     
                     if (_animator)
                         _animator.Play(Animator.StringToHash("RunDown"));
