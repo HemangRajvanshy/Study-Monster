@@ -1,0 +1,41 @@
+Mathematical quotes for Boards in the game:
+
+	-Geometry will draw the soul toward truth and create the spirit of
+	 philosophy.
+		-PLATO
+		
+	- Mathematics is the art of saying many things in many
+	  different ways. 
+		– MAXWELL
+		
+	- Every body of discovery is mathematical in form because there is no
+	  other guidance we can have.
+	  	– DARWIN
+	  	
+	
+Math book and misc. content:
+
+First Village: Basic Math.
+
+Overview:
+	Topics to be taught: Basic trigonometry, solving and intuition for quadractics and relation between 	the graphical and analytical representation of equations and functions.
+
+Teaching Material:
+
+	Baisc Trigonometry:
+	(Only with a triangle and for acute angles)
+	https://www.mathsisfun.com/algebra/trigonometry.html
+	
+	Graphs, functions and equations:
+	Starting with the example of a straight line equation, demonstrate its graph, its features and how 	the graph is related to the equation. Now with a quadratic, do the same, this time, also tell them 	about a function. (An equation is like a machine, for every x, it'd give you one or more y, a 	function on the otherhand will always give you a single y)
+	Develop a feeling for solution of quadratics here, and also for solutions of more than one equation.
+	
+
+	
+Second Village: Conic Sections.
+
+Overview: 
+	Topics covered: circles, parabolas, ellipses and hyperbolas.
+	
+Teaching Material:
+	Tell the student how the graphs of equations can be used to describe to crazy shapes with very specific properties. 
