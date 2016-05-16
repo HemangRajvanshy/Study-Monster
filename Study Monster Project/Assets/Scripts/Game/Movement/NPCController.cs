@@ -78,7 +78,9 @@ public class NPCController : CharacterController, IInteractable {
 
     private void SetOrientation() // Turn towards the player to talk to him.
     {
-        if(Player != null)
+        if (moving)
+            CancelMove(from);
+        if (Player != null)
         {
             if (transform.position.y < Player.transform.position.y)
             {

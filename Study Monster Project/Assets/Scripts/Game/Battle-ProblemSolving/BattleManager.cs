@@ -9,10 +9,9 @@ public class BattleManager : MonoBehaviour {
 
     public PlayerCombatant Player;
     public Image PlayerHealthBar;
-
     private EnemyCombatant EnemyCombatant;
     public Image EnemyHealthBar;
-    
+       
     void Start()
     {
         BattleCanvas.enabled = false;

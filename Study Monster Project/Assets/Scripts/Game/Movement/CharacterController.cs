@@ -30,8 +30,9 @@ public class CharacterController : MonoBehaviour
     [NonSerialized]
     public CharacterCollisionState2D collisionState = new CharacterCollisionState2D();
 
-    private bool moving;
+    protected bool moving;
     protected bool success = false;
+    protected Vector2 from; // Original position from where it's moving
     private string SortingLayer;
 
     #region MonoBehaviour
@@ -89,7 +90,7 @@ public class CharacterController : MonoBehaviour
     protected virtual IEnumerator Tween(Vector2 deltapos, float waitTime)
     {
         float time = 0;
-        Vector2 from = transform.localPosition;
+        from = transform.localPosition;
         Vector2 To = transform.localPosition + new Vector3(deltapos.x, deltapos.y);
         while (moving)
         {
@@ -107,11 +108,16 @@ public class CharacterController : MonoBehaviour
     {
         if (!Raycast(To, (1f-distCompleted)))
         {
-            moving = false;
-            transform.localPosition = BackTo;
+            CancelMove(BackTo);
             return false;
         }
         return true;
+    }
+
+    protected void CancelMove(Vector2 BackTo) // Cancel the current move and go back.
+    {
+        moving = false;
+        transform.localPosition = BackTo;
     }
 
     protected bool Raycast(Vector2 Direction, float Distance)

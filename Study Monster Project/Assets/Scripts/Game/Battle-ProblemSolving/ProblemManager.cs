@@ -8,6 +8,7 @@ public class ProblemManager : MonoBehaviour {
     public BattleManager BattleMngr;
 
     public Text ProblemText;
+    public Text ProblemProgress;
     public Button Option1;
     public Button Option2;
     public Button Option3;
@@ -36,11 +37,13 @@ public class ProblemManager : MonoBehaviour {
         WrongAnswer = new UnityAction(Wrong);
     }
 
-    public void Init(EnemyCombatant Enemy)
+    public void Init(EnemyCombatant Enemy) // Called by Battle Manager;
     {
         EnemyCombatant = Enemy;
         Problem = Enemy.problem;
         ProblemText.text = Enemy.problem.ProblemText;
+        ProblemProgress.text = "Question: " + System.Environment.NewLine;
+        ProblemProgress.text += (ProblemText.text + System.Environment.NewLine);
         CurrentPart = 0;
         SetupOptions(CurrentPart);
     }
@@ -98,7 +101,7 @@ public class ProblemManager : MonoBehaviour {
         }
     }
 
-    private void SetupOptions()
+    private void SetupOptions() 
     {
         Option1.interactable = true;
         Option1.onClick.RemoveAllListeners();
@@ -112,13 +115,15 @@ public class ProblemManager : MonoBehaviour {
 
     void Correct()
     {
-        if(CurrentPart < Problem.Parts.Count-1)
+        ProblemProgress.text += Problem.Parts[CurrentPart].Correct + System.Environment.NewLine;
+
+        if (CurrentPart < Problem.Parts.Count-1) // Still going on, not the end.
         {
             CurrentPart++;
             BattleMngr.UpdateCombat(true);
             SetupOptions(CurrentPart);
         }
-        else
+        else // Problem Over!
         {
             BattleMngr.UpdateCombat(true);
         }
