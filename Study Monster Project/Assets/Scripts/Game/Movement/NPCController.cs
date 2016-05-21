@@ -119,7 +119,7 @@ public class NPCController : CharacterController, IInteractable {
         }
     }
 
-    protected override IEnumerator Tween(Vector2 deltapos, float waitTime)
+    protected override IEnumerator Tween(Vector2 deltapos, float waitTime, bool ColCheck = true)
     {
         yield return base.Tween(deltapos, waitTime);
         if (success)

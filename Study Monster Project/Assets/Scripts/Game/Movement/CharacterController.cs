@@ -30,7 +30,8 @@ public class CharacterController : MonoBehaviour
     [NonSerialized]
     public CharacterCollisionState2D collisionState = new CharacterCollisionState2D();
 
-    protected bool moving;
+    public bool moving;
+
     protected bool success = false;
     protected Vector2 from; // Original position from where it's moving
     private string SortingLayer;
@@ -68,13 +69,17 @@ public class CharacterController : MonoBehaviour
 
     #region Public
 
-    public void move(Vector2 deltaPosition, float TilesPerSec)
+    public void move(Vector2 deltaPosition, float TilesPerSec, bool ColCheck = true)
     {
+        if (!ColCheck)
+            Debug.Log(moving);
         if (!moving)
         {
             moving = true;
+            if (!ColCheck)
+                Debug.Log(moving);
             //transform.position += new Vector3(deltaPosition.x, deltaPosition.y);
-            StartCoroutine(Tween(deltaPosition, 1/TilesPerSec));
+            StartCoroutine(Tween(deltaPosition, 1/TilesPerSec, ColCheck));
             StartCoroutine(WaitTillNextMove(1/TilesPerSec));
         }
     }
@@ -87,7 +92,7 @@ public class CharacterController : MonoBehaviour
         moving = false;
     }
 
-    protected virtual IEnumerator Tween(Vector2 deltapos, float waitTime)
+    protected virtual IEnumerator Tween(Vector2 deltapos, float waitTime, bool ColCheck = true)
     {
         float time = 0;
         from = transform.localPosition;
@@ -97,7 +102,7 @@ public class CharacterController : MonoBehaviour
             time += Time.deltaTime;
             float distCompleted = time / waitTime;
             success = CompleteMoveCheck(deltapos, from, distCompleted);
-            if (!success)
+            if (ColCheck && !success)
                 break;
             transform.localPosition = Vector2.Lerp(from, To, distCompleted);
             yield return new WaitForEndOfFrame();

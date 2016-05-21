@@ -1,33 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class DoorScript : MonoBehaviour { //Enables and disables the Room gameobject and also listens to the event.
 
     public GameObject RoomObject;
+    public GameObject PortalDoorOut;
+    public GameObject PortalDoorIn;
 
+    private PlayerController PlayerControl;
+    private Vector2 TeleportTo;
+    private Vector2 TeleportBackTo;
     private bool IsIn = false;
+
+    void Start()
+    {
+        TeleportTo = PortalDoorOut.transform.position;
+        TeleportBackTo = PortalDoorIn.transform.position;
+    }
 
     public void OnTriggerEnter2D(Collider2D col)
     {
         if(col.tag == "Player")
         {
+            PlayerControl = col.GetComponent<PlayerController>();
             if (IsIn)
-                GoOut();
+                StartCoroutine(GoOut(col.transform));
             else
-                GoIn();
+                StartCoroutine(GoIn(col.transform));
         }
     }
 
-    private void GoIn()
+    private IEnumerator GoIn(Transform player)
     {
-        RoomObject.SetActive(true); // Maybe also teleport camera to new location to effectively hide the background.
+        while (PlayerControl.moving)
+            yield return new WaitForEndOfFrame();
+        Debug.Log(PlayerControl.moving);
+        PlayerControl.move(Vector2.up, PlayerControl.TilesPerSecond, false);
+        while (PlayerControl.moving)
+        {
+            Debug.Log("Moving: " + player.position);
+            yield return new WaitForEndOfFrame();
+        }
+        PlayerControl.Teleport(TeleportTo); //teleport camera to new location to effectively hide the background.
         IsIn = true;
     }
 
-    private void GoOut()
+    private IEnumerator GoOut(Transform player)
     {
-        RoomObject.SetActive(false);
+        while (PlayerControl.moving)
+            yield return new WaitForEndOfFrame();
+        PlayerControl.move(Vector2.down, PlayerControl.TilesPerSecond, false);
+        while (PlayerControl.moving)
+            yield return new WaitForEndOfFrame();
+        PlayerControl.Teleport(TeleportBackTo);
         IsIn = false;
     }
 

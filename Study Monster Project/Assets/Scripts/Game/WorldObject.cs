@@ -11,6 +11,7 @@ public class WorldObject : MonoBehaviour {
     void Awake()
     {
         Renderer = GetComponent<SpriteRenderer>();
+        Renderer.sortingLayerName = "WorldObject";
     }
 
 	public void OnTriggerStay2D(Collider2D col)

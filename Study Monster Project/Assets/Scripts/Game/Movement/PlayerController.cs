@@ -73,6 +73,13 @@ public class PlayerController : CharacterController {
         Fighting = false;
     }
 
+    public void Teleport(Vector2 To)
+    {
+        if (moving)
+            moving = false;
+        transform.position = To;
+    }
+
     public void Talk(IInteractable Interactable)
     {
         Talking = GameManager.Instance.Dialogue.Say(Interactable.Interact());
