@@ -28,7 +28,7 @@ Teaching Material:
 	
 	Graphs, functions and equations:
 	Starting with the example of a straight line equation, demonstrate its graph, its features and how 	the graph is related to the equation. Now with a quadratic, do the same, this time, also tell them 	about a function. (An equation is like a machine, for every x, it'd give you one or more y, a 	function on the otherhand will always give you a single y)
-	Develop a feeling for solution of quadratics here, and also for solutions of more than one equation.
+	Develop a feeling for solution of quadratics here, and also for solutions of more than one simultaneous equation.
 	
 
 	

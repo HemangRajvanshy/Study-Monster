@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\ProblemManager.cs" />
     <Compile Include="Assets\Scripts\Game\Battle-ProblemSolving\StudyCombatant.cs" />
     <Compile Include="Assets\Scripts\Game\DialogueSystem.cs" />
+    <Compile Include="Assets\Scripts\Game\DoorScript.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\InGameDialogue.cs" />
     <Compile Include="Assets\Scripts\Game\Interactable.cs" />
@@ -98,6 +99,8 @@
     <Compile Include="Assets\Scripts\Game\SceneAndStory\Story.cs" />
     <Compile Include="Assets\Scripts\Game\SceneAndStory\StoryManager.cs" />
     <Compile Include="Assets\Scripts\Game\TextType.cs" />
+    <Compile Include="Assets\Scripts\Game\Textbook\Page.cs" />
+    <Compile Include="Assets\Scripts\Game\Textbook\TextViewManager.cs" />
     <Compile Include="Assets\Scripts\Game\WorldObject.cs" />
     <Compile Include="Assets\Scripts\Menu\Menu_UI.cs" />
     <Compile Include="Assets\Scripts\Menu\PlayPanel.cs" />
