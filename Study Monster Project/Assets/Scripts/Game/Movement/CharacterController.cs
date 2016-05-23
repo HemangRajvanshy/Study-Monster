@@ -71,13 +71,9 @@ public class CharacterController : MonoBehaviour
 
     public void move(Vector2 deltaPosition, float TilesPerSec, bool ColCheck = true)
     {
-        if (!ColCheck)
-            Debug.Log(moving);
         if (!moving)
         {
             moving = true;
-            if (!ColCheck)
-                Debug.Log(moving);
             //transform.position += new Vector3(deltaPosition.x, deltaPosition.y);
             StartCoroutine(Tween(deltaPosition, 1/TilesPerSec, ColCheck));
             StartCoroutine(WaitTillNextMove(1/TilesPerSec));
@@ -101,9 +97,12 @@ public class CharacterController : MonoBehaviour
         {
             time += Time.deltaTime;
             float distCompleted = time / waitTime;
-            success = CompleteMoveCheck(deltapos, from, distCompleted);
-            if (ColCheck && !success)
-                break;
+            if (ColCheck) // If you are supposed to check for collisions while moving, do it.
+            {
+                success = CompleteMoveCheck(deltapos, from, distCompleted);
+                if (!success)
+                    break;
+            }
             transform.localPosition = Vector2.Lerp(from, To, distCompleted);
             yield return new WaitForEndOfFrame();
         }
