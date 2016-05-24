@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\Game\SceneAndStory\SceneParam.cs" />
     <Compile Include="Assets\Scripts\Game\SceneAndStory\Story.cs" />
     <Compile Include="Assets\Scripts\Game\SceneAndStory\StoryManager.cs" />
+    <Compile Include="Assets\Scripts\Game\TextBookView.cs" />
     <Compile Include="Assets\Scripts\Game\TextType.cs" />
     <Compile Include="Assets\Scripts\Game\Textbook\Page.cs" />
     <Compile Include="Assets\Scripts\Game\Textbook\TextViewManager.cs" />

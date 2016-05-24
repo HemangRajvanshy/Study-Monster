@@ -49,15 +49,12 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
 
     private IEnumerator GoIn(Transform player)
     {
-        Debug.Log("going in");
         IsIn = true;
         while (PlayerControl.moving)
             yield return new WaitForEndOfFrame();
-        Debug.Log(PlayerControl.moving);
         PlayerControl.move(Vector2.up, PlayerControl.TilesPerSecond, false);
         while (PlayerControl.moving)
         {
-            Debug.Log("Moving: " + player.position);
             yield return new WaitForEndOfFrame();
         }
         PlayerControl.Teleport(TeleportTo); //teleport camera to new location to effectively hide the background.
@@ -65,7 +62,6 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
 
     private IEnumerator GoOut(Transform player)
     {
-        Debug.Log("Going Out");
         IsIn = false;
         while (PlayerControl.moving)
             yield return new WaitForEndOfFrame();

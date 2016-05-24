@@ -5,6 +5,7 @@ public class PlayerController : CharacterController {
 
     public int TilesPerSecond = 1;
     public GameObject PlayerSprite;
+    public PlayerInventory Inventory;
 
     private Animator _animator;
     private RaycastHit2D _lastControllerColliderHit;
