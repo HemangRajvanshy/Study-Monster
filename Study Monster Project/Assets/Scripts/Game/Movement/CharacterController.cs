@@ -147,11 +147,13 @@ public class CharacterController : MonoBehaviour
             if (hit.transform.GetComponent<SpriteRenderer>().sortingLayerName != SortingLayer)
                 return false;
         }
-        if (hit.transform.GetComponentInChildren<SpriteRenderer>() != null)
+        else if (hit.transform.GetComponentInChildren<SpriteRenderer>() != null)
         {
             if (hit.transform.GetComponentInChildren<SpriteRenderer>().sortingLayerName != SortingLayer)
                 return false;
         }
+        else
+            return false;
         return true;
     }
 

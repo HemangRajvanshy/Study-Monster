@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Game\InGameDialogue.cs" />
     <Compile Include="Assets\Scripts\Game\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Game\InventoryView.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\CharacterController.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\NPCController.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\PlayerController.cs" />
@@ -98,10 +99,9 @@
     <Compile Include="Assets\Scripts\Game\SceneAndStory\SceneParam.cs" />
     <Compile Include="Assets\Scripts\Game\SceneAndStory\Story.cs" />
     <Compile Include="Assets\Scripts\Game\SceneAndStory\StoryManager.cs" />
-    <Compile Include="Assets\Scripts\Game\TextBookView.cs" />
     <Compile Include="Assets\Scripts\Game\TextType.cs" />
     <Compile Include="Assets\Scripts\Game\Textbook\Page.cs" />
-    <Compile Include="Assets\Scripts\Game\Textbook\TextViewManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Textbook\TextBookView.cs" />
     <Compile Include="Assets\Scripts\Game\WorldObject.cs" />
     <Compile Include="Assets\Scripts\Menu\Menu_UI.cs" />
     <Compile Include="Assets\Scripts\Menu\PlayPanel.cs" />

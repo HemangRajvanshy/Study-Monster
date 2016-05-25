@@ -24,6 +24,14 @@ public class InputManager : MonoBehaviour {
                 Main.Instance.OnClick(raycastResults[0]);
         }
 
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            if (Main.Instance.SceneMgr.IsSceneLoaded("Game") && !GameManager.Instance.Pause.Paused)
+            {
+                GameManager.Instance.Inventory.ToggleInventoryMenu();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Z)) // KEY CODE TO BE CHANGED
         {
             if(Main.Instance.SceneMgr.IsSceneLoaded("Game"))

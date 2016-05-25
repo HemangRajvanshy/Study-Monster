@@ -113,7 +113,7 @@ public class PlayerController : CharacterController {
 
     public void HandleInteraction()
     {
-        if (!Fighting && !GameManager.Instance.Pause.Paused)
+        if (!moving && !Fighting && !GameManager.Instance.Pause.Paused)
         {
             if (InteractingWith != null)
             {
