@@ -15,7 +15,7 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
     void Start()
     {
         TeleportTo = PortalDoorOut.transform.position;
-        TeleportBackTo = PortalDoorIn.transform.position;
+        TeleportBackTo = new Vector2(PortalDoorIn.transform.position.x, PortalDoorIn.transform.position.y + 1);
     }
     Coroutine InputRoutine;
     public void OnTriggerEnter2D(Collider2D col)
@@ -65,10 +65,10 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
         IsIn = false;
         while (PlayerControl.moving)
             yield return new WaitForEndOfFrame();
+        PlayerControl.Teleport(TeleportBackTo);
         PlayerControl.move(Vector2.down, PlayerControl.TilesPerSecond, false);
         while (PlayerControl.moving)
             yield return new WaitForEndOfFrame();
-        PlayerControl.Teleport(TeleportBackTo);
     }
 
 }

@@ -7,11 +7,9 @@ public class GameManager : MonoBehaviour {
 
     public Pause Pause;
     public TextType TextType;
-    public DialogueSystem Dialogue;
-    public StoryManager StoryManager;
+    public GameUIManager GameUI;
     public BattleManager BattleManager;
     public PlayerController Player;
-    public InventoryView Inventory;
     public InGameItems Items;
 
     private int ProgressIndex;
@@ -80,7 +78,7 @@ public class GameManager : MonoBehaviour {
         switch (state)
         {
             case GameState.Story:
-                StoryManager.OnClick();
+                GameUI.StoryManager.OnClick();
                 break;
             case GameState.Game:
                 break;
@@ -115,7 +113,7 @@ public class GameManager : MonoBehaviour {
     private void StartStory(int StoryIndx)
     {
         state = GameState.Story;
-        StoryManager.Init(StoryIndx);
+        GameUI.StoryManager.Init(StoryIndx);
     }
 
     #endregion

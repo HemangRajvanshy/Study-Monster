@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\Game\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\Game\DoorScript.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Game\GameUIManager.cs" />
     <Compile Include="Assets\Scripts\Game\InGameDialogue.cs" />
     <Compile Include="Assets\Scripts\Game\Interactable.cs" />
     <Compile Include="Assets\Scripts\Game\InventoryView.cs" />

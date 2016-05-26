@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour {
         {
             if (Main.Instance.SceneMgr.IsSceneLoaded("Game") && !GameManager.Instance.Pause.Paused)
             {
-                GameManager.Instance.Inventory.ToggleInventoryMenu();
+                GameManager.Instance.GameUI.Inventory.ToggleInventoryMenu();
             }
         }
 

@@ -83,7 +83,7 @@ public class PlayerController : CharacterController {
 
     public void Talk(IInteractable Interactable)
     {
-        Talking = GameManager.Instance.Dialogue.Say(Interactable.Interact());
+        Talking = GameManager.Instance.GameUI.Dialogue.Say(Interactable.Interact());
         if(!Talking && InteractingNPC != null)
         {
             if (InteractingNPC.GetComponent<NPCController>().Combatant) // Check whether NPC is combatant. Also somehow check if we have already fought before or not.

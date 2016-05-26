@@ -22,4 +22,10 @@ public class InventoryView : MonoBehaviour {
         }
     }
 
+    public void ShowText()
+    {
+        ToggleInventoryMenu();
+        GameManager.Instance.GameUI.Textbook.ShowTextbook();
+    }
+
 }
