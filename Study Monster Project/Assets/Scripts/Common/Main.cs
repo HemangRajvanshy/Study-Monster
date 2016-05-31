@@ -6,6 +6,7 @@ public class Main : MonoBehaviour {
 
     public static Main Instance;
 
+    public InputManager Input;
     public MusicManager MusicMgr;
     public SfxManager SfxMgr;
     public GameObject LoadScreen;

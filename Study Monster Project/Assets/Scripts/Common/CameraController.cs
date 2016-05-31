@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
@@ -7,11 +8,14 @@ public class CameraController : MonoBehaviour {
     //{
     //    Camera.main.orthographicSize = Screen.height / 128f;
     //}
+    public Image FadeImg;
 
     public float _wantedAspectRatio = 1.777777778f;
     static float wantedAspectRatio;
     static Camera cam;
     static Camera backgroundCam;
+
+    public bool fading;
 
     void Awake()
     {
@@ -28,6 +32,45 @@ public class CameraController : MonoBehaviour {
         wantedAspectRatio = _wantedAspectRatio;
         SetCamera();
     }
+
+
+    public IEnumerator FadeIn(float fadeTime, float smoothness = 0.1f)
+    {
+        if (!fading)
+        {
+            fading = true;
+
+            float progress = 0f;
+            while (FadeImg.color != Color.black)
+            {
+                progress += smoothness / fadeTime;
+                FadeImg.color = Color.Lerp(FadeImg.color, Color.black, progress);
+                yield return new WaitForSeconds(smoothness);
+            }
+
+            fading = false;
+        }
+    }
+
+    public IEnumerator FadeOut(float fadeTime, float smoothness = 0.1f)
+    {
+        if (!fading)
+        {
+            fading = true;
+
+            float progress = 0f;
+            while (FadeImg.color != Color.clear)
+            {
+                progress += smoothness / fadeTime;
+                FadeImg.color = Color.Lerp(FadeImg.color, Color.clear, progress);
+                yield return new WaitForSeconds(smoothness);
+            }
+
+            fading = false; 
+        }
+    }
+
+
 
     public static void SetCamera()
     {

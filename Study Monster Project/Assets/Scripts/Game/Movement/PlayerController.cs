@@ -124,7 +124,7 @@ public class PlayerController : CharacterController {
 
     private void HandleMovement()
     {
-        if (!Talking && !Fighting)
+        if (!Talking && !Fighting && InputManager.CanReadInput)
         {
             if (Input.GetKey(KeyCode.RightArrow) && Raycast(Vector2.right, 1f))
             {

@@ -38,5 +38,5 @@ Overview:
 	Topics covered: circles, parabolas, ellipses and hyperbolas.
 	
 Teaching Material:
-	Tell the student how the graphs of equations can be used to describe to crazy shapes with very specific properties. 
+	Tell the student how the graphs of equations can be used to describe to crazy shapes with very specific properties. Also, can tell them about the applications of parabola and ellipses in mirrors 
 	
