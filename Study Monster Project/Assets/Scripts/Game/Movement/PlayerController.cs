@@ -20,12 +20,14 @@ public class PlayerController : CharacterController {
         base.Awake();
 
         _animator = GetComponent<Animator>();
+        _animator.speed = TilesPerSecond * 0.6f;
 
         // listen to some events for illustration purposes
         onControllerCollidedEvent += onControllerCollider;
         onTriggerEnterEvent += TriggerEnterEvent;
         onTriggerExitEvent += TriggerExitEvent;
     }
+
 
     #region Event Listeners
 
@@ -65,7 +67,7 @@ public class PlayerController : CharacterController {
     {
         if (!GameManager.Instance.Pause.Paused)
         {
-            HandleMovement();
+            ReadInput();
         }   
     }
 
@@ -122,51 +124,42 @@ public class PlayerController : CharacterController {
         }
     }
 
-    private void HandleMovement()
+    private void ReadInput()
     {
         if (!Talking && !Fighting && InputManager.CanReadInput)
         {
             if (Input.GetKey(KeyCode.RightArrow) && Raycast(Vector2.right, 1f))
             {
-                move(Vector2.right, TilesPerSecond);
-
-                if (PlayerSprite.transform.localScale.x < 0f)
-                    PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("Run"));
+                HandleMovement(KeyCode.RightArrow, Vector2.right);
+                Turn(3, PlayerSprite, _animator);
             }
             else if (Input.GetKey(KeyCode.LeftArrow) && Raycast(Vector2.left, 1f))
             {
-                move(Vector2.left, TilesPerSecond);
-
-                if (PlayerSprite.transform.localScale.x > 0f)
-                    PlayerSprite.transform.localScale = new Vector3(-PlayerSprite.transform.localScale.x, PlayerSprite.transform.localScale.y, PlayerSprite.transform.localScale.z);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("Run"));
+                HandleMovement(KeyCode.LeftArrow, Vector2.left);
+                Turn(2, PlayerSprite, _animator);
             }
             else if (Input.GetKey(KeyCode.UpArrow) && Raycast(Vector2.up, 1f))
             {
-                move(Vector2.up, TilesPerSecond);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("RunUP"));
+                HandleMovement(KeyCode.UpArrow, Vector2.up);
+                Turn(1, PlayerSprite, _animator);
             }
             else if (Input.GetKey(KeyCode.DownArrow) && Raycast(Vector2.down, 1f))
             {
-                move(Vector2.down, TilesPerSecond);
-
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("RunDown"));
+                HandleMovement(KeyCode.DownArrow, Vector2.down);
+                Turn(0, PlayerSprite, _animator);
             }
             else
             {
-                //Don't move               
-                if (_animator)
-                    _animator.Play(Animator.StringToHash("Idle"));
+                if(!moving)             
+                    _animator.SetFloat("Speed", 0f);
             } 
         }
+    }
+
+    private void HandleMovement(KeyCode pressed, Vector2 Direction)
+    {
+        move(Direction, TilesPerSecond);
+        _animator.SetFloat("Speed", 1f);
     }
 
 }

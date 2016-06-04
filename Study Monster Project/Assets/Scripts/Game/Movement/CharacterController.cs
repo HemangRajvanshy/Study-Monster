@@ -157,4 +157,32 @@ public class CharacterController : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Turn Player to Said Direction:
+    ///
+    /// </summary>
+    /// <param name="direction"> 0 -> Down.
+    /// 1 -> Up.
+    /// 2 -> Left.
+    /// 3 -> Right.</param>
+    protected void Turn(int direction, GameObject SpriteObject, Animator anim)
+    {
+        if(direction == 2)
+        {
+            if (SpriteObject.transform.localScale.x > 0f)
+                SpriteObject.transform.localScale = new Vector3(-SpriteObject.transform.localScale.x, SpriteObject.transform.localScale.y, SpriteObject.transform.localScale.z);
+            anim.SetInteger("Direction", 2);
+        }
+        else if(direction == 3)
+        {
+            if (SpriteObject.transform.localScale.x < 0f)
+                SpriteObject.transform.localScale = new Vector3(-SpriteObject.transform.localScale.x, SpriteObject.transform.localScale.y, SpriteObject.transform.localScale.z);
+            anim.SetInteger("Direction", 2);
+        }
+        else
+        {
+            anim.SetInteger("Direction", direction);
+        }
+    }
+
 }

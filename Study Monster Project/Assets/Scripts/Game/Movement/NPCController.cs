@@ -37,7 +37,6 @@ public class NPCController : CharacterController, IInteractable {
 
     void Start()
     {
-         // Making it so that I can pass it to CharController.move()
         _animator = GetComponent<Animator>();
         onTriggerEnterEvent += TriggerEnter;
 
