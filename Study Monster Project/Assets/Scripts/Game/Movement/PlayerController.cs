@@ -130,22 +130,22 @@ public class PlayerController : CharacterController {
         {
             if (Input.GetKey(KeyCode.RightArrow) && Raycast(Vector2.right, 1f))
             {
-                HandleMovement(KeyCode.RightArrow, Vector2.right);
+                HandleMovement(KeyCode.RightArrow, Vector2.right, 3);
                 Turn(3, PlayerSprite, _animator);
             }
             else if (Input.GetKey(KeyCode.LeftArrow) && Raycast(Vector2.left, 1f))
             {
-                HandleMovement(KeyCode.LeftArrow, Vector2.left);
+                HandleMovement(KeyCode.LeftArrow, Vector2.left, 2);
                 Turn(2, PlayerSprite, _animator);
             }
             else if (Input.GetKey(KeyCode.UpArrow) && Raycast(Vector2.up, 1f))
             {
-                HandleMovement(KeyCode.UpArrow, Vector2.up);
+                HandleMovement(KeyCode.UpArrow, Vector2.up, 1);
                 Turn(1, PlayerSprite, _animator);
             }
             else if (Input.GetKey(KeyCode.DownArrow) && Raycast(Vector2.down, 1f))
             {
-                HandleMovement(KeyCode.DownArrow, Vector2.down);
+                HandleMovement(KeyCode.DownArrow, Vector2.down, 0);
                 Turn(0, PlayerSprite, _animator);
             }
             else
@@ -156,9 +156,10 @@ public class PlayerController : CharacterController {
         }
     }
 
-    private void HandleMovement(KeyCode pressed, Vector2 Direction)
+    public void HandleMovement(KeyCode pressed, Vector2 Direction, int direction, bool ColCheck = true)
     {
-        move(Direction, TilesPerSecond);
+        move(Direction, TilesPerSecond, ColCheck);
+        Turn(direction, PlayerSprite, _animator);
         _animator.SetFloat("Speed", 1f);
     }
 

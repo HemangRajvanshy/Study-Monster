@@ -165,7 +165,7 @@ public class CharacterController : MonoBehaviour
     /// 1 -> Up.
     /// 2 -> Left.
     /// 3 -> Right.</param>
-    protected void Turn(int direction, GameObject SpriteObject, Animator anim)
+    public void Turn(int direction, GameObject SpriteObject, Animator anim)
     {
         if(direction == 2)
         {

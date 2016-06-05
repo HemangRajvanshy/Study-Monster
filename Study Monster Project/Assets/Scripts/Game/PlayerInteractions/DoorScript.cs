@@ -60,7 +60,7 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
             IsIn = true;
             while (PlayerControl.moving)
                 yield return new WaitForEndOfFrame();
-            PlayerControl.move(Vector2.up, PlayerControl.TilesPerSecond, false);
+            PlayerControl.HandleMovement(KeyCode.UpArrow, Vector2.up, 1, false);
             while (PlayerControl.moving)
             {
                 yield return new WaitForEndOfFrame();
@@ -88,6 +88,8 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
             while (PlayerControl.moving)
                 yield return new WaitForEndOfFrame();
 
+            PlayerControl.Turn(0, PlayerControl.PlayerSprite, PlayerControl.GetComponent<Animator>());
+
             //FadeInOut And teleport
             StartCoroutine(CameraControl.FadeIn(0.3f, 0.05f));
             while (CameraControl.fading)
@@ -97,7 +99,7 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
             while (CameraControl.fading)
                 yield return new WaitForEndOfFrame();
 
-            PlayerControl.move(Vector2.down, PlayerControl.TilesPerSecond, false);
+            PlayerControl.HandleMovement(KeyCode.DownArrow, Vector2.down, 0, false);
             while (PlayerControl.moving)
                 yield return new WaitForEndOfFrame();
 
