@@ -15,7 +15,8 @@ public class PlayerInventory : MonoBehaviour {
 
     public void AddPageToText(int num)
     {
-        TextbookPages.Add(num);
+        if(!TextbookPages.Contains(num))
+            TextbookPages.Add(num);
     }
 }
 

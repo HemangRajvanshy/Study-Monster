@@ -44,6 +44,11 @@ public class DialogueSystem : MonoBehaviour {
         return true;
     }
 
+    public int GetDialogueIndex()
+    {
+        return DialogueIndex;
+    }
+
     private IEnumerator WaitWhileTyping()
     {
         yield return new WaitForEndOfFrame();

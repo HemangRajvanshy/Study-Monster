@@ -117,33 +117,67 @@ public class PlayerController : CharacterController {
     {
         if (!moving && !Fighting && !GameManager.Instance.Pause.Paused)
         {
-            if (InteractingWith != null)
+            if (InteractingWith != null && LookingAt(InteractingWith.GetObjectInstance().transform))
             {
                 Talk(InteractingWith);
             } 
         }
     }
 
+    public void HandleMovement(KeyCode pressed, Vector2 Direction, int direction, bool ColCheck = true)
+    {
+        Turn(direction, PlayerSprite, _animator);
+        if (Raycast(Direction, 1f))
+        {
+            move(Direction, TilesPerSecond, ColCheck);
+        }
+        _animator.SetFloat("Speed", 1f);
+    }
+
+    public bool LookingAt(Transform Interactable)
+    {
+        if (transform.position.y < Interactable.transform.position.y && _animator.GetInteger("Direction") == 1)
+        {
+            return true;
+        }
+        else if (transform.position.y > Interactable.transform.position.y && _animator.GetInteger("Direction") == 0)
+        {
+            return true;
+        }
+        else if (transform.position.x > Interactable.transform.position.x && _animator.GetInteger("Direction") == 2)
+        {
+            return true;
+        }
+        else if (transform.position.x < Interactable.transform.position.x && _animator.GetInteger("Direction") == 2)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
     private void ReadInput()
     {
         if (!Talking && !Fighting && InputManager.CanReadInput)
         {
-            if (Input.GetKey(KeyCode.RightArrow) && Raycast(Vector2.right, 1f))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 HandleMovement(KeyCode.RightArrow, Vector2.right, 3);
                 Turn(3, PlayerSprite, _animator);
             }
-            else if (Input.GetKey(KeyCode.LeftArrow) && Raycast(Vector2.left, 1f))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 HandleMovement(KeyCode.LeftArrow, Vector2.left, 2);
                 Turn(2, PlayerSprite, _animator);
             }
-            else if (Input.GetKey(KeyCode.UpArrow) && Raycast(Vector2.up, 1f))
+            else if (Input.GetKey(KeyCode.UpArrow))
             {
                 HandleMovement(KeyCode.UpArrow, Vector2.up, 1);
                 Turn(1, PlayerSprite, _animator);
             }
-            else if (Input.GetKey(KeyCode.DownArrow) && Raycast(Vector2.down, 1f))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 HandleMovement(KeyCode.DownArrow, Vector2.down, 0);
                 Turn(0, PlayerSprite, _animator);
@@ -154,13 +188,9 @@ public class PlayerController : CharacterController {
                     _animator.SetFloat("Speed", 0f);
             } 
         }
+        else
+            _animator.SetFloat("Speed", 0f); 
     }
 
-    public void HandleMovement(KeyCode pressed, Vector2 Direction, int direction, bool ColCheck = true)
-    {
-        move(Direction, TilesPerSecond, ColCheck);
-        Turn(direction, PlayerSprite, _animator);
-        _animator.SetFloat("Speed", 1f);
-    }
 
 }

@@ -52,7 +52,7 @@ public class TextBookView : MonoBehaviour {
         PageIndex = page;
         if (page == 0)
             LastPageButton.interactable = false;
-        if (page == GameManager.Instance.Player.Inventory.GetAvailableText().Count - 1)
+        if (page >= GameManager.Instance.Player.Inventory.GetAvailableText().Count - 1)
             NextPageButton.interactable = false;
 
         ContentImage.sprite = TextbookPages[page];

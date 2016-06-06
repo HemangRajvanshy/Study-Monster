@@ -11,10 +11,16 @@ public class Interactable: WorldObject, IInteractable {
     {
         return Dialogue;
     }
+
+    public GameObject GetObjectInstance()
+    {
+        return this.gameObject;
+    }
 }
 
 
 public interface IInteractable
 {
     List<string> Interact();
+    GameObject GetObjectInstance();
 }

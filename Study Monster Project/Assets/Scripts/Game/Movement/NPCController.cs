@@ -62,7 +62,7 @@ public class NPCController : CharacterController, IInteractable {
         Talking = false;
     }
 
-    public List<string> Interact()
+    public virtual List<string> Interact()
     {
         SetOrientation();
         Talking = true;
@@ -233,5 +233,10 @@ public class NPCController : CharacterController, IInteractable {
         }
         return false;
     }
-    
+
+    public GameObject GetObjectInstance()
+    {
+        return this.gameObject;
+    }
+
 }
