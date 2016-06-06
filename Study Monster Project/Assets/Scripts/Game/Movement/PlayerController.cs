@@ -65,7 +65,7 @@ public class PlayerController : CharacterController {
 
     void Update()
     {
-        if (!GameManager.Instance.Pause.Paused)
+        if (!GameManager.Instance.Pause.Paused && !moving)
         {
             ReadInput();
         }   
