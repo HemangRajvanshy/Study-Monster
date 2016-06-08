@@ -44,9 +44,12 @@ public class ProblemManager : MonoBehaviour {
         Problem = Enemy.problem;
         ProblemText.text = Enemy.problem.ProblemText;
         if (Enemy.problem.ProblemImage != null)
-            ProblemImage = Enemy.problem.ProblemImage;
+        {
+            ProblemImage.enabled = true;
+            ProblemImage.sprite = Enemy.problem.ProblemImage;
+        }
         else
-            ProblemImage = null;
+            ProblemImage.enabled = false;
         ProblemProgress.text = "Question: " + System.Environment.NewLine;
         ProblemProgress.text += (ProblemText.text + System.Environment.NewLine);
         CurrentPart = 0;
