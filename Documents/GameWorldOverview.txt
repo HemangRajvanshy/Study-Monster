@@ -1,6 +1,6 @@
 Three Cities/Towns through the game.
 
-First sunny village: Basic math, ensure that the player is good enough for future challenges. If not make train him here. (co-ordinate geom, quadratics a little trig and graphs of functions)
+First sunny village: Basic math, ensure that the player is good enough for future challenges. If not train him here. (co-ordinate geom, quadratics a little trig and graphs of functions)
 Has to defeat first exercise(Batch of type 3 npcs) to go through.
 
 Second Town could be Conic sections.

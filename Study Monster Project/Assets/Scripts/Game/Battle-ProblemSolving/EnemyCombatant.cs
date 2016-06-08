@@ -58,6 +58,7 @@ public class EnemyCombatant : StudyCombatant {
 public struct Problem
 {
     public string ProblemText;
+    public Image ProblemImage;
     public List<OptionSet> Parts;
 }
 

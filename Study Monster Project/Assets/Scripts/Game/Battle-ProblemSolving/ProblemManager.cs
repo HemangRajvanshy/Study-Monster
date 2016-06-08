@@ -8,6 +8,7 @@ public class ProblemManager : MonoBehaviour {
     public BattleManager BattleMngr;
 
     public Text ProblemText;
+    public Image ProblemImage;
     public Text ProblemProgress;
     public Button Option1;
     public Button Option2;
@@ -42,6 +43,10 @@ public class ProblemManager : MonoBehaviour {
         EnemyCombatant = Enemy;
         Problem = Enemy.problem;
         ProblemText.text = Enemy.problem.ProblemText;
+        if (Enemy.problem.ProblemImage != null)
+            ProblemImage = Enemy.problem.ProblemImage;
+        else
+            ProblemImage = null;
         ProblemProgress.text = "Question: " + System.Environment.NewLine;
         ProblemProgress.text += (ProblemText.text + System.Environment.NewLine);
         CurrentPart = 0;

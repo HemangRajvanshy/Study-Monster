@@ -1,12 +1,13 @@
 fileFormatVersion: 2
-guid: af2b26beccb4c34479eb2aee80e15c90
-timeCreated: 1464176952
+guid: 7a3f63caffd30104d83f4df493ad2d1d
+timeCreated: 1465315442
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: amythist_town_houses_by_ladestitute-d65zqcl_0
-    21300002: amythist_town_houses_by_ladestitute-d65zqcl_1
-    21300004: amythist_town_houses_by_ladestitute-d65zqcl_2
+    21300000: MainTileset_0
+    21300002: MainTileset_2
+    21300004: MainTileset_3
+    21300006: MainTileset_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -47,57 +48,72 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: amythist_town_houses_by_ladestitute-d65zqcl_0
+    - name: MainTileset_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 157
-        width: 176
-        height: 126
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -88, y: 63}
-        - {x: -88, y: -63}
-        - {x: 88, y: -63}
-        - {x: 88, y: 63}
-    - name: amythist_town_houses_by_ladestitute-d65zqcl_1
+      - - {x: -32, y: 16}
+        - {x: -32, y: -16}
+        - {x: 32, y: -16}
+        - {x: 32, y: 16}
+    - name: MainTileset_2
       rect:
         serializedVersion: 2
-        x: 176
-        y: 12
-        width: 176
-        height: 124
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 1, w: 0}
-      outline:
-      - - {x: -88, y: 62}
-        - {x: -88, y: -62}
-        - {x: 88, y: -62}
-        - {x: 88, y: 62}
-    - name: amythist_town_houses_by_ladestitute-d65zqcl_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 11
-        width: 175
-        height: 126
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -87.5, y: 63}
-        - {x: -87.5, y: -63}
-        - {x: 87.5, y: -63}
-        - {x: 87.5, y: 63}
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: MainTileset_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: MainTileset_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
     outline: []
   spritePackingTag: 
   userData: 
