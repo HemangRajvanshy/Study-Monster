@@ -76,6 +76,11 @@ public class PlayerController : CharacterController {
         Fighting = false;
     }
 
+    public void StopTalking()
+    {
+        Talking = false;
+    }
+
     public void Teleport(Vector2 To)
     {
         if (moving)

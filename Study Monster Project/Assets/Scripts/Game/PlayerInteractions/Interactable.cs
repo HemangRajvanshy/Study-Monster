@@ -7,7 +7,7 @@ public class Interactable: WorldObject, IInteractable {
 
     public List<string> Dialogue = new List<string>();
 
-    public List<string> Interact()
+    public virtual List<string> Interact()
     {
         return Dialogue;
     }

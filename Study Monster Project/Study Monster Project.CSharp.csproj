@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\Game\Pause.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerInteractions\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerInteractions\DoorScript.cs" />
+    <Compile Include="Assets\Scripts\Game\PlayerInteractions\HealingInteractable.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerInteractions\Interactable.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerInteractions\PlayerInventory.cs" />
     <Compile Include="Assets\Scripts\Game\PlayerInteractions\WorldObject.cs" />

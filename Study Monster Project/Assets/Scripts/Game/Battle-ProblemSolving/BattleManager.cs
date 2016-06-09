@@ -41,7 +41,7 @@ public class BattleManager : MonoBehaviour {
         {
             Player.TakeDamage(EnemyCombatant.GetDamage());
             UpdateHealth(PlayerHealthBar, Player.GetHealth());
-            if (Player.GetHealth() == 0)
+            if (Player.GetHealth() <= 0)
                 EndCombat(false);
         }
     }
@@ -50,10 +50,13 @@ public class BattleManager : MonoBehaviour {
     {
         GameManager.Instance.EndCombat();
         if (win)
+        {
             EnemyCombatant.Lost();
-        //else //Enemies don't do anything when they win, the game just loads from last save point.
-        //    EnemyCombatant.Won();
-        Player.GetComponent<PlayerController>().Talk(EnemyCombatant.GetComponent<IInteractable>());
+            Player.GetComponent<PlayerController>().Talk(EnemyCombatant.GetComponent<IInteractable>());
+        }
+        else
+            Player.Lost();
+
         BattleCanvas.enabled = false;
     }
 
