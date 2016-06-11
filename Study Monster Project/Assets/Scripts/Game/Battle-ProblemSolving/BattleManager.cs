@@ -57,6 +57,7 @@ public class BattleManager : MonoBehaviour {
         else
             Player.Lost();
 
+
         BattleCanvas.enabled = false;
     }
 

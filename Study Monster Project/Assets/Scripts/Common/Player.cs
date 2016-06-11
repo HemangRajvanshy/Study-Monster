@@ -69,6 +69,7 @@ public class Player : MonoBehaviour {
     public void NPCFought(int num)
     {
         GameData.NPCFought.Add(num);
+        SaveGame();
     }
 
     public void LoadGame(int saveNumber) // Everything reads out of GameData as and when needed.
