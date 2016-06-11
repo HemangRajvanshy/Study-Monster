@@ -29,7 +29,9 @@ public class EnemyCombatant : StudyCombatant {
     {
         if(Main.Instance.player.GameData.NPCFought.Contains(CombatantNumber))
         {
-            Lost();
+            //Lost
+            Npc.Dialogue = AfterLooseDialogue;
+            Npc.FoughtWith();
         }
         //else we have not fought
     }

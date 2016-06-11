@@ -55,7 +55,9 @@ public class Player : MonoBehaviour {
     {
         GameData.ProgressIndex = ProgressIndex;
         GameData.PlayerHealth = GameManager.Instance.BattleManager.Player.GetHealth();
-        GameData.SceneLocation = Main.Instance.SceneMgr.ActiveScene;
+        if(Main.Instance.SceneMgr.ActiveScene != "Game")
+            GameData.SceneLocation = Main.Instance.SceneMgr.ActiveScene;
+        Debug.Log(Main.Instance.SceneMgr.ActiveScene);
         //NPCFought List gets updated throughout automatically.
 
         BinaryFormatter formatter = new BinaryFormatter();
