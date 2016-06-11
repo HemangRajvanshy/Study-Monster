@@ -37,6 +37,7 @@ public class Player : MonoBehaviour {
         GameData.ProgressIndex = 0;
         GameData.SceneLocation = "01-Start";
         GameData.NPCFought = new List<int>();
+        GameData.PlayerHealth = 0;
 
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour {
     public void SaveGame() // Save the current GameData to permanent memory.
     {
         GameData.ProgressIndex = ProgressIndex;
+        GameData.PlayerHealth = GameManager.Instance.BattleManager.Player.GetHealth();
         GameData.SceneLocation = Main.Instance.SceneMgr.ActiveScene;
         //NPCFought List gets updated throughout automatically.
 
@@ -179,5 +181,6 @@ public class GameSave
     public int ProgressIndex;
     public string SceneLocation;
 
+    public int PlayerHealth;
     public List<int> NPCFought;
 }

@@ -6,9 +6,9 @@ public class StudyCombatant : MonoBehaviour {
 
     public int TotalHealth = 100;
 
-    private int Health;
+    protected int Health;
 
-    protected void Start()
+    protected virtual void Start()
     {
         Health = TotalHealth;
     }
