@@ -12,7 +12,7 @@ public class NPCItemOutlet : NPCController
 
     void Start()
     {
-
+        Debug.Log("TODO: Check whether the item is already given or no.");
     }
 
     public override List<string> Interact()

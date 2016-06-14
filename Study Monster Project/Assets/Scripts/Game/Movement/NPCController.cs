@@ -22,7 +22,7 @@ public class NPCController : CharacterController, IInteractable {
     private Animator _animator;
     [SerializeField]
     private List<BasicMovements> MovementSet = new List<BasicMovements>();
-    private enum BasicMovements
+    public enum BasicMovements
     {
         Up,
         Down,
@@ -175,7 +175,7 @@ public class NPCController : CharacterController, IInteractable {
             return BasicMovements.Idle;
     }
 
-    private bool PerformMove(BasicMovements Movement)
+    protected bool PerformMove(BasicMovements Movement)
     {
         switch (Movement)
         {

@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Game\GameUIManager.cs" />
     <Compile Include="Assets\Scripts\Game\InventoryView.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\CharacterController.cs" />
+    <Compile Include="Assets\Scripts\Game\Movement\GuidingRoadblockNPC.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\NPCController.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\NPCItemOutlet.cs" />
     <Compile Include="Assets\Scripts\Game\Movement\PlayerController.cs" />

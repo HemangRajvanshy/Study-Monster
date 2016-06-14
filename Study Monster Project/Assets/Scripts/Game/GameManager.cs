@@ -85,17 +85,22 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    #endregion
+    public int GetProgressIndex()
+    {
+        return ProgressIndex;
+    }
 
-    #region Private Methods
-
-    private void IncrementProgress()
+    public void IncrementProgress()
     {
         ProgressIndex++;
         Main.Instance.player.SetProgress(ProgressIndex);
         SaveGame();
         ProgressTriggers();
     }
+
+    #endregion
+
+    #region Private Methods
 
     private void ProgressTriggers() // Trigger an event at some progress number
     {
