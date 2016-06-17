@@ -19,7 +19,7 @@ public class NPCController : CharacterController, IInteractable {
 
     private bool Talking = false;
     private PlayerController Player;
-    private Animator _animator;
+    protected Animator _animator;
     [SerializeField]
     private List<BasicMovements> MovementSet = new List<BasicMovements>();
     public enum BasicMovements

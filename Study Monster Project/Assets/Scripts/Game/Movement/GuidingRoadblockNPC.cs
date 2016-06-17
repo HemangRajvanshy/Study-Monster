@@ -23,6 +23,7 @@ public class GuidingRoadblockNPC : NPCController {
         {
             GameManager.Instance.IncrementProgress();
             PerformMove(DeltaMovement);
+            Turn(0, this.gameObject, _animator);
         }
         return base.Interact();
     }

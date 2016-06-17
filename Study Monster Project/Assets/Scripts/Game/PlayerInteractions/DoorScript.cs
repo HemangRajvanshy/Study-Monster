@@ -13,9 +13,9 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
     private Vector2 TeleportTo;
     private Vector2 TeleportBackTo;
     private bool IsIn = false;
-    private bool ReadInput = false;
+    protected bool ReadInput = false;
 
-    void Start()
+    protected void Start()
     {
         CameraControl = Camera.main.GetComponent<CameraController>(); 
         TeleportTo = PortalDoorOut.transform.position;
@@ -33,7 +33,7 @@ public class DoorScript : MonoBehaviour { //Enables and disables the Room gameob
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D col)
+    public virtual void OnTriggerEnter2D(Collider2D col)
     {
         if(col.tag == "Player")
         {
