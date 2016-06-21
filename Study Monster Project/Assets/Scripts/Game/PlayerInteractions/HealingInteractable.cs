@@ -4,6 +4,15 @@ using System.Collections;
 
 public class HealingInteractable : Interactable {
 
+    public Vector2 Location;
+    public int direction = 1;
+
+    void Start()
+    {
+        if (Location == Vector2.zero)
+            Location = new Vector2(this.transform.position.x, this.transform.position.y - 1);
+    }
+
 	public override List<string> Interact()
     {
         StartCoroutine(HealPlayer());

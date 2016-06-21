@@ -9,4 +9,6 @@ public class SceneParam : MonoBehaviour {
     public GameObject LeftBorder;
     public GameObject TopBorder;
     public GameObject BottomBorder;
+
+    public HealingInteractable SceneHealLocation;
 }

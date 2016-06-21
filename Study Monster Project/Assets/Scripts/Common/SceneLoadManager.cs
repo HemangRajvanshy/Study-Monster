@@ -7,6 +7,7 @@ using System.Collections;
 public class SceneLoadManager : MonoBehaviour {
 
     public string ActiveScene { get { return SceneManager.GetActiveScene().name; } }
+    public SceneParam ActiveSceneParam { get { return SceneManager.GetActiveScene().GetRootGameObjects()[0].GetComponent<SceneParam>();  } }
     public List<string> LoadedAdditives = new List<string>();
 
     private Scene PrevActive;

@@ -161,8 +161,6 @@ public class PlayerController : CharacterController {
         return false;
     }
 
-
-
     private void ReadInput()
     {
         if (!Talking && !Fighting && InputManager.CanReadInput)
